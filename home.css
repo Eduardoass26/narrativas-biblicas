@@ -222,7 +222,7 @@ a {
 
   /* Ajusta a logo para celulares */
   .logo {
-    height: 50px; /* Reduz o tamanho da logo */
+    height: 100px; /* Reduz o tamanho da logo */
     margin-top: 20px; /* Ajusta a margem superior */
   }
 }
@@ -249,7 +249,7 @@ a {
 
   /* Ajusta a logo para smartphones */
   .logo {
-    height: 40px; /* Reduz ainda mais o tamanho da logo */
+    height: 100px; /* Reduz ainda mais o tamanho da logo */
     margin-top: 10px; /* Ajusta a margem superior */
   }
 }
