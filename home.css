@@ -217,6 +217,9 @@ a {
 }
 
 @media (max-width: 480px) { /* Ajusta para smartphones */
+  .logo{
+    width: 50px ;
+  }
   .slider {
     width: 95%; /* Ocupa quase toda a largura em telas menores */
   }
