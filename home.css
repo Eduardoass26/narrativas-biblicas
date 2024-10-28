@@ -184,6 +184,11 @@ a {
 }
 
 /* Estilos para telas grandes */
+/* home.css */
+
+/* ... (restante do seu CSS) ... */
+
+/* Estilos para telas grandes */
 @media (min-width: 768px) { /* Ajusta para telas maiores que tablets */
   .slider {
     width: 600px; /* Mantém o tamanho fixo */
@@ -214,12 +219,15 @@ a {
     font-size: 16px;
     padding: 10px 20px;
   }
+
+  /* Ajusta a logo para celulares */
+  .logo {
+    height: 50px; /* Reduz o tamanho da logo */
+    margin-top: 20px; /* Ajusta a margem superior */
+  }
 }
 
 @media (max-width: 480px) { /* Ajusta para smartphones */
-  .logo{
-    width: 50px ;
-  }
   .slider {
     width: 95%; /* Ocupa quase toda a largura em telas menores */
   }
@@ -237,5 +245,11 @@ a {
   #leia {
     font-size: 14px;
     padding: 8px 16px;
+  }
+
+  /* Ajusta a logo para smartphones */
+  .logo {
+    height: 40px; /* Reduz ainda mais o tamanho da logo */
+    margin-top: 10px; /* Ajusta a margem superior */
   }
 }
