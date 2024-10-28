@@ -182,12 +182,6 @@ button.next:hover {
 a {
   text-decoration: none;
 }
-
-/* Estilos para telas grandes */
-/* home.css */
-
-/* ... (restante do seu CSS) ... */
-
 /* Estilos para telas grandes */
 @media (min-width: 768px) { /* Ajusta para telas maiores que tablets */
   .slider {
