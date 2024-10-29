@@ -795,6 +795,9 @@ history_bible.forEach(character => {
   const characterCard = document.createElement('div');
   characterCard.classList.add('character-card');
 
+  const link = document.createElement('a');
+  link.href = `#${character.id}`; // Crie um link para a seção usando o ID do personagem
+
   const image = document.createElement('img');
   image.src = character.imagem1;
   image.alt = character.title;
@@ -804,12 +807,14 @@ history_bible.forEach(character => {
   title.classList.add('character-title');
   title.textContent = character.title;
 
-  characterCard.appendChild(image);
-  characterCard.appendChild(title);
+  link.appendChild(image); // Adicione a imagem ao link
+  link.appendChild(title); // Adicione o título ao link
+
+  characterCard.appendChild(link); // Adicione o link ao card
   boxChar.appendChild(characterCard);
   i++;
 });
-   
+
 
 
 
