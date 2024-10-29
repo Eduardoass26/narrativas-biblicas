@@ -1,0 +1,34 @@
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .character-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .character-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .character-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .character-title {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+  }
+  
