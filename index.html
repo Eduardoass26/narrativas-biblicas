@@ -28,6 +28,11 @@
        . Um espaço para mergulhar na sabedoria e 
        nos ensinamentos que atravessam os séculos!
       </p>
+
+      <audio controls autoplay loop>
+        <source src="Text to Speech (2).wav" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
       
       <section class="slider">
         <div class="slider-container" id="sliderContainer"></div>
@@ -39,7 +44,10 @@
     </section>
     
     
-    <script >const images = [
+    <script >
+     const audio = document.querySelector('audio');
+     audio.play();
+    const images = [
       { src: "public/imgs/imgs_slider/Genesis_1.jpg" },
       { src: "public/imgs/imgs_slider/moises-sarsa-ardente.png" },
       { src: "public/imgs/imgs_slider/slider.webp"},
