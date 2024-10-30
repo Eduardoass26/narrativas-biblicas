@@ -97,6 +97,7 @@ nav button:hover {
 
 .character-card:hover {
   transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .character-image {
@@ -165,6 +166,123 @@ nav button:hover {
     margin-top: 10px; /* Ajusta a margem superior */
   }
 }
+/* Font and basic styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: #dcdada;
+  color: #444;
+  line-height: 1.6;
+}
+
+#name {
+  text-align: center;
+  margin-top: 200px;
+  font-size: 2.8em;
+  font-weight: bold;
+  color: #222;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.historybox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.historybox img {
+  max-width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.historybox img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+#history {
+  text-align: center;
+  font-size: 30px;
+  line-height: 1.5;
+  margin: 0 10px 20px;
+  padding: 25px;
+  background-color: #e6e5e5;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#history:hover {
+  background-color: #dcdcdc;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.reflection {
+  font-size: 30px;
+  background-color: #f5f5f5;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.reflection:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.reflection p {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  text-align: center;
+  color: #555;
+  line-height: 1.7;
+}
+
+.reflection p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .historybox {
+    flex-direction: column;
+  }
+
+  .historybox img {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2.2em;
+  }
+
+  #history {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  #history {
+    font-size: 0.9em;
+  }
+
+  .reflection p {
+    font-size: 0.9em;
+  }
+}
+
     </style>
     <title>Document</title>
 </head>
@@ -181,7 +299,7 @@ nav button:hover {
           </a>
         </nav>
       </header>
-  
+  <section class="geral">
       <section class='welcome'>
         <h1 class="title">NARRATIVAS BÍBLICAS</h1>
         <p class="description">
@@ -192,6 +310,8 @@ nav button:hover {
         </p>
         
         <div class="box-char"></div>
+
+  </section>
        
           <script>
             const history_bible = [
@@ -838,8 +958,31 @@ history_bible.forEach(character => {
   const characterCard = document.createElement('div');
   characterCard.classList.add('character-card');
 
-  const link = document.createElement('a');
-  link.href = `#${character.id}`; // Crie um link para a seção usando o ID do personagem
+  characterCard.addEventListener('click', () => {
+    console.log(character.id);
+    const geral = document.getElementsByClassName("geral")[0]; 
+    if (geral) {
+      geral.innerHTML = "";
+
+      const characteselect = `
+      <h1 id = "name">${history_bible[character.id-1].title}</h1>
+
+      <div class = "historybox">
+      <img src = "${history_bible[character.id-1].imagem1}" id = "image1"/>
+      <p id = "history">${history_bible[character.id-1].text}</p>
+      <img src = "${history_bible[character.id-1].imagem2}" id = "image2"/>
+      </div>
+
+      <div class = "reflection">
+      <p id = "reflection1">"${history_bible[character.id-1].reflection1}"</p><br>
+      <p id = "reflection2">"${history_bible[character.id-1].reflection2}"</p><br>
+      <p id = "reflection3">"${history_bible[character.id-1].reflection3}"</p><br>
+      </div>
+      `
+      geral.innerHTML = characteselect;
+    }
+
+  });
 
   const image = document.createElement('img');
   image.src = character.imagem1;
@@ -850,13 +993,13 @@ history_bible.forEach(character => {
   title.classList.add('character-title');
   title.textContent = character.title;
 
-  link.appendChild(image); // Adicione a imagem ao link
-  link.appendChild(title); // Adicione o título ao link
+  characterCard.appendChild(image); // Adicione a imagem ao card
+  characterCard.appendChild(title); // Adicione o título ao card
 
-  characterCard.appendChild(link); // Adicione o link ao card
   boxChar.appendChild(characterCard);
   i++;
 });
+
 
 
 
