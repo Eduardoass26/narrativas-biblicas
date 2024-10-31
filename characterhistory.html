@@ -37,13 +37,13 @@ header {
 
 nav {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Adiciona um espaço entre os botões */
 }
 
 nav button {
   background: #2980b9;
   color: #fff;
-  padding: 10px 20px;
+  padding: 15px 25px; /* Adiciona padding ao botão */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -115,8 +115,13 @@ nav button:hover {
   color: #333;
 }
 
+
 /* Responsiveness */
 @media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
   .character-card {
     width: 45%;
   }
@@ -164,6 +169,10 @@ nav button:hover {
   .logo {
     height: 100px; /* Reduz ainda mais o tamanho da logo */
     margin-top: 10px; /* Ajusta a margem superior */
+  }
+  button{
+    margin-left: 20px;
+    margin-top: 20px;
   }
 }
 /* Font and basic styles */
@@ -299,7 +308,8 @@ body {
             <button>Curiosidades Bíblicas</button>
           </a>
         </nav>
-      </header>
+    </header>
+
   <section class="geral">
       <section class='welcome'>
         <h1 class="title">NARRATIVAS BÍBLICAS</h1>

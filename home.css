@@ -199,6 +199,7 @@ a {
 
 /* Estilos para telas menores */
 @media (max-width: 768px) { /* Ajusta para tablets */
+
   .slider {
     width: 90%; /* Ocupa quase toda a largura em telas menores */
   }
@@ -223,6 +224,7 @@ a {
     height: 100px; /* Reduz o tamanho da logo */
     margin-top: 20px; /* Ajusta a margem superior */
   }
+ 
 }
 
 @media (max-width: 480px) { /* Ajusta para smartphones */
