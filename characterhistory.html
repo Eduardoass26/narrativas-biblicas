@@ -1,476 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-      /* characterhistory.css */
-
-  body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  background-color: #f4f4f4;
-  color: #333;
-}
-a{
-  text-decoration: none;
-}
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #2c3e50;
-  color: #fff;
-  position: fixed;
-  width: 100%;
-  height: 100px;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  margin-top: 100px;
-  height: 300px;
-}
-
-nav {
-  display: flex;
-  gap: 20px; /* Adiciona um espaço entre os botões */
-}
-
-nav button {
-  background: #2980b9;
-  color: #fff;
-  padding: 15px 25px; /* Adiciona padding ao botão */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-nav button:hover {
-  background: #3498db;
-}
-
-.welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px 0;
-  text-align: center;
-  margin-top: 100px;
-}
-
-.title {
-  font-size: 3em;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #2980b9;
-}
-
-.description {
-  font-size: 1.2em;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  color: #555;
-}
-
-.box-char {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-.character-card {
-  width: 250px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
-}
-
-.character-card:hover {
-  transform: translateY(-5px);
-  cursor: pointer;
-}
-
-.character-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.character-title {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-
-/* Responsiveness */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .character-card {
-    width: 45%;
-  }
-  
-  .welcome {
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 2em;
-  }
-  .logo {
-    height: 100px; /* Reduz o tamanho da logo */
-    margin-top: 20px; /* Ajusta a margem superior */
-  }
-}
-
-@media (max-width: 480px) {
-  .character-card {
-    width: 90%;
-  }
-  
-  .title {
-    font-size: 1.5em;
-  }
-  
-  .description {
-    font-size: 1em;
-  }
-  
-  header {
-    padding: 5px 10px;
-    height: 80px;
-  }
-  
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  nav a {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-  .logo {
-    height: 100px; /* Reduz ainda mais o tamanho da logo */
-    margin-top: 10px; /* Ajusta a margem superior */
-  }
-  button{
-    margin-left: 20px;
-    margin-top: 20px;
-  }
-}
-/* Font and basic styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  background-color: #dcdada;
-  color: #444;
-  line-height: 1.6;
-}
-
-#name {
-  text-align: center;
-  margin-top: 200px;
-  margin-bottom: 50px;
-  font-size: 25px;
-  font-weight: bold;
-  color: #2980b9;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.historybox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 40px 0;
-}
-
-.historybox img {
-  max-width: 100%;
-  max-height: 600px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.historybox img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
-#history {
-  text-align: center;
-  font-size: 30px;
-  line-height: 1.5;
-  margin: 0 10px 20px;
-  padding: 25px;
-  background-color: #e6e5e5;
-  border-radius: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#history:hover {
-  background-color: #dcdcdc;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.reflection {
-  font-size: 30px;
-  background-color: #f5f5f5;
-  padding: 25px;
-  border-radius: 15px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.reflection:hover {
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
-
-.reflection p {
-  margin-bottom: 15px;
-  font-size: 1.1em;
-  text-align: center;
-  color: #555;
-  line-height: 1.7;
-}
-
-.reflection p:last-child {
-  margin-bottom: 0;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .historybox {
-    flex-direction: column;
-  }
-
-  .historybox img {
-    width: 100%;
-  }
-
-  h1 {
-    font-size: 2.2em;
-  }
-
-  #history {
-    font-size: 1em;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.8em;
-  }
-
-  #history {
-    font-size: 0.9em;
-  }
-
-  .reflection p {
-    font-size: 0.9em;
-  }
-}
-
-    </style>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="characterhistory.css">
+  <title>NARRATIVAS BIBLICAS</title>
 </head>
+
 <body>
-    <header>
-        <img src="public/imgs/logo/logo.png" alt="Logo do Site" class="logo" />
-        <nav>
-         
-          <a href="">
-            <button>Aprendizados</button>
-          </a>
-          <a href="">
-            <button>Curiosidades Bíblicas</button>
-          </a>
-        </nav>
-    </header>
+
 
   <section class="geral">
-      <section class='welcome'>
-        <h1 class="title">NARRATIVAS BÍBLICAS</h1>
-        <p class="description">
-        Venha conhecer o site Narrativas Bíblicas! Descubra as histórias épicas contadas 
+    <section class='welcome'>
+      <h1 class="title">NARRATIVAS BÍBLICAS</h1>
+      <p class="description">
+        Venha conhecer o site Narrativas Bíblicas! Descubra as histórias épicas contadas
         na Bíblia, estude e aprenda com reflexões profundas sobre os relatos bíblicos
-         . Um espaço para mergulhar na sabedoria e 
-         nos ensinamentos que atravessam os séculos!
-        </p>
-        
-        <div class="box-char"></div>
+        . Um espaço para mergulhar na sabedoria e
+        nos ensinamentos que atravessam os séculos!
+      </p>
 
+      <div class="box-char"></div>
+
+    </section>
+
+    <div class="logo">
+      <img src="public/imgs/logo/logo.png" alt="">
+    </div>
   </section>
-       
-          <script>
-            const history_bible = [
-  {
-    id: 1,
-    title: "Gênesis: A Criação",
-    text: `No princípio, Deus, em sua natureza triúna como Pai, Filho e Espírito Santo, criou o céu e a terra. A Terra era sem forma e vazia, escuridão cobria o abismo, e o Espírito de Deus pairava sobre as águas. Em seis dias, Deus criou o universo, separando a luz das trevas, a água da terra seca, as plantas, o sol, a lua e as estrelas. No sétimo dia, Deus descansou, abençoando e santificando o dia de descanso.  No sexto dia, Deus criou o homem e a mulher à sua imagem e semelhança, dando-lhes domínio sobre todas as criaturas. Eles foram colocados no Jardim do Éden, um lugar de perfeição e comunhão com Deus. Deus os instruiu a serem fecundos, multiplicarem-se e encher a terra, mas proibiu-os de comer do fruto da árvore do conhecimento do bem e do mal.`,
+  <script>
+    const history_bible = [
+      {
+        id: 1,
+        title: "Gênesis: A Criação",
+        text: `No princípio, Deus, em sua natureza triúna como Pai, Filho e Espírito Santo, criou o céu e a terra. A Terra era sem forma e vazia, escuridão cobria o abismo, e o Espírito de Deus pairava sobre as águas. Em seis dias, Deus criou o universo, separando a luz das trevas, a água da terra seca, as plantas, o sol, a lua e as estrelas. No sétimo dia, Deus descansou, abençoando e santificando o dia de descanso.  No sexto dia, Deus criou o homem e a mulher à sua imagem e semelhança, dando-lhes domínio sobre todas as criaturas. Eles foram colocados no Jardim do Éden, um lugar de perfeição e comunhão com Deus. Deus os instruiu a serem fecundos, multiplicarem-se e encher a terra, mas proibiu-os de comer do fruto da árvore do conhecimento do bem e do mal.`,
 
-    imagem1: "public/imgs/Gênesis _A_Criação/genesis_a_criacao.jpg",
-    imagem2: "public/imgs/Gênesis _A_Criação/adão_e_eva.jpg",
+        imagem1: "public/imgs/Gênesis _A_Criação/genesis_a_criacao.jpg",
+        imagem2: "public/imgs/Gênesis _A_Criação/adão_e_eva.jpg",
 
-    reflection1: "     Conexão com Deus: Como essa história te faz sentir sobre seu relacionamento com Deus? Ela inspira admiração, maravilha ou um senso de responsabilidade?",
-    reflection2: "     A Natureza do Pecado: Como você entende o conceito de pecado em sua própria vida? Quais são as tentações que você enfrenta?",
-    reflection3: "     Esperança de Redenção: Embora o texto retrate a queda, também sugere a possibilidade de restauração. Isso levanta questões sobre o amor de Deus pela humanidade e o potencial de redenção através da fé."
-  },
+        reflection1: "     Conexão com Deus: Como essa história te faz sentir sobre seu relacionamento com Deus? Ela inspira admiração, maravilha ou um senso de responsabilidade?",
+        reflection2: "     A Natureza do Pecado: Como você entende o conceito de pecado em sua própria vida? Quais são as tentações que você enfrenta?",
+        reflection3: "     Esperança de Redenção: Embora o texto retrate a queda, também sugere a possibilidade de restauração. Isso levanta questões sobre o amor de Deus pela humanidade e o potencial de redenção através da fé."
+      },
 
-  {
-    id: 2,
-    title: "Lúcifer: A Queda do Anjo de Luz",
-    text: `Lúcifer, o anjo de maior destaque e beleza, conhecido como "portador da luz", ocupava uma posição de grande poder no céu. Sua beleza e sabedoria eram inigualáveis entre os anjos. No entanto, a ambição e o orgulho o dominaram, levando-o a desejar ser igual a Deus. Ele liderou uma rebelião no céu, levando consigo um terço dos anjos. Como consequência, Lúcifer, agora conhecido como Satanás, o adversário, e seus seguidores foram expulsos do céu. A queda de Lúcifer trouxe maldição e pecado à terra, abrindo caminho para as lutas e sofrimentos que a humanidade enfrentaria. Desde então, Satanás tenta desviar a humanidade do caminho de Deus, sendo o principal opositor do plano divino.`,
+      {
+        id: 2,
+        title: "Lúcifer: A Queda do Anjo de Luz",
+        text: `Lúcifer, o anjo de maior destaque e beleza, conhecido como "portador da luz", ocupava uma posição de grande poder no céu. Sua beleza e sabedoria eram inigualáveis entre os anjos. No entanto, a ambição e o orgulho o dominaram, levando-o a desejar ser igual a Deus. Ele liderou uma rebelião no céu, levando consigo um terço dos anjos. Como consequência, Lúcifer, agora conhecido como Satanás, o adversário, e seus seguidores foram expulsos do céu. A queda de Lúcifer trouxe maldição e pecado à terra, abrindo caminho para as lutas e sofrimentos que a humanidade enfrentaria. Desde então, Satanás tenta desviar a humanidade do caminho de Deus, sendo o principal opositor do plano divino.`,
 
-    imagem1: "public/imgs/lucifer_a_queda/lucifer.webp",
-    imagem2: "public/imgs/lucifer_a_queda/lucifer_a_queda.webp",
+        imagem1: "public/imgs/lucifer_a_queda/lucifer.webp",
+        imagem2: "public/imgs/lucifer_a_queda/lucifer_a_queda.webp",
 
-    reflection1: "   Orgulho e Queda: Como o orgulho afeta nossa relação com Deus e com os outros? Há áreas em sua vida onde o orgulho precisa ser superado?",
-    reflection2: "   Escolhas e Consequências: A história de Lúcifer mostra que nossas escolhas têm consequências. Como essa verdade pode moldar suas decisões diárias?",
-    reflection3: "   A Batalha Espiritual: A história de Lúcifer nos lembra que há uma batalha espiritual em andamento. Como você se prepara para enfrentar as tentações e desafios espirituais em sua vida?"
-  },
-  {
+        reflection1: "   Orgulho e Queda: Como o orgulho afeta nossa relação com Deus e com os outros? Há áreas em sua vida onde o orgulho precisa ser superado?",
+        reflection2: "   Escolhas e Consequências: A história de Lúcifer mostra que nossas escolhas têm consequências. Como essa verdade pode moldar suas decisões diárias?",
+        reflection3: "   A Batalha Espiritual: A história de Lúcifer nos lembra que há uma batalha espiritual em andamento. Como você se prepara para enfrentar as tentações e desafios espirituais em sua vida?"
+      },
+      {
 
-    id: 3,
-    title: "Caim e Abel: O Primeiro Fratricídio",
-    text: `Adão e Eva tiveram dois filhos: Caim e Abel. Caim era lavrador e Abel, pastor de ovelhas. Um dia, ambos ofereceram sacrifícios a Deus. Caim ofereceu os frutos da sua colheita, mas Abel ofereceu os melhores cordeiros do seu rebanho. Deus aceitou o sacrifício de Abel, mas rejeitou o de Caim. Caim ficou furioso e cheio de inveja. Deus advertiu Caim sobre o perigo da ira e da inveja, dizendo-lhe que ele deveria dominar seus sentimentos.  Mas Caim não deu ouvidos.  Ele esperou Abel ir ao campo e o matou, cometendo o primeiro homicídio na história da humanidade.  Deus interrogou Caim sobre o paradeiro de seu irmão, mas ele mentiu. Deus amaldiçoou Caim, dizendo que a terra não lhe daria mais frutos, e que ele seria um andarilho e um fugitivo. Caim foi expulso da presença de Deus e teve que viver em exílio, marcado pela culpa e pelo peso de seu pecado.`,
+        id: 3,
+        title: "Caim e Abel: O Primeiro Fratricídio",
+        text: `Adão e Eva tiveram dois filhos: Caim e Abel. Caim era lavrador e Abel, pastor de ovelhas. Um dia, ambos ofereceram sacrifícios a Deus. Caim ofereceu os frutos da sua colheita, mas Abel ofereceu os melhores cordeiros do seu rebanho. Deus aceitou o sacrifício de Abel, mas rejeitou o de Caim. Caim ficou furioso e cheio de inveja. Deus advertiu Caim sobre o perigo da ira e da inveja, dizendo-lhe que ele deveria dominar seus sentimentos.  Mas Caim não deu ouvidos.  Ele esperou Abel ir ao campo e o matou, cometendo o primeiro homicídio na história da humanidade.  Deus interrogou Caim sobre o paradeiro de seu irmão, mas ele mentiu. Deus amaldiçoou Caim, dizendo que a terra não lhe daria mais frutos, e que ele seria um andarilho e um fugitivo. Caim foi expulso da presença de Deus e teve que viver em exílio, marcado pela culpa e pelo peso de seu pecado.`,
 
-    imagem1: "public/imgs/caim_e_abel/caim_e_abel.png",
-    imagem2: "public/imgs/caim_e_abel/abel_morte.png",
+        imagem1: "public/imgs/caim_e_abel/caim_e_abel.png",
+        imagem2: "public/imgs/caim_e_abel/abel_morte.png",
 
-    reflection1: "   Inveja e Ira: Como a inveja e a ira podem levar à violência e à destruição? Como você lida com esses sentimentos em sua própria vida?",
-    reflection2: "   Consequências do Pecado: A história de Caim e Abel mostra as graves consequências do pecado. Que lições você pode tirar sobre a necessidade de buscar o perdão e a reconciliação?",
-    reflection3: "   O Amor de Deus: Apesar do pecado de Caim, Deus ainda se preocupou com ele e o advertiu. Isso revela o amor e a misericórdia de Deus, mesmo para aqueles que se afastam dele."
-  },
+        reflection1: "   Inveja e Ira: Como a inveja e a ira podem levar à violência e à destruição? Como você lida com esses sentimentos em sua própria vida?",
+        reflection2: "   Consequências do Pecado: A história de Caim e Abel mostra as graves consequências do pecado. Que lições você pode tirar sobre a necessidade de buscar o perdão e a reconciliação?",
+        reflection3: "   O Amor de Deus: Apesar do pecado de Caim, Deus ainda se preocupou com ele e o advertiu. Isso revela o amor e a misericórdia de Deus, mesmo para aqueles que se afastam dele."
+      },
 
-  {
-    id: 4,
-    title: "Noé: O Dilúvio e a Nova Aliança",
-    text: `A humanidade havia se corrompido, e a violência e a maldade se espalharam por toda a terra. Deus viu que a maldade do homem era grande e que todos os seus pensamentos e intenções eram maus. Deus se arrependeu de ter criado o homem e decidiu destruí-lo da face da terra. No entanto, Deus escolheu Noé, um homem justo e íntegro, para salvar a humanidade da destruição. Deus ordenou a Noé que construísse uma arca de madeira para abrigar sua família e um casal de cada espécie de animal, fornecendo instruções precisas sobre as dimensões da arca e os materiais a serem usados. Noé obedeceu a Deus e, com a ajuda de seus filhos, construiu a arca. Por 40 dias e 40 noites, choveu torrencialmente sobre a terra, e as águas cobriram toda a superfície. Todas as criaturas que não estavam na arca pereceram. Após a tempestade cessar, a arca repousou sobre o monte Ararat. Noé enviou uma pomba para verificar se as águas haviam baixado. Quando a pomba voltou com um ramo de oliveira no bico, Noé soube que a terra havia secado. Deus fez uma aliança com Noé, prometendo nunca mais destruir a terra com um dilúvio e estabelecendo o arco-íris como um sinal dessa aliança.`,
+      {
+        id: 4,
+        title: "Noé: O Dilúvio e a Nova Aliança",
+        text: `A humanidade havia se corrompido, e a violência e a maldade se espalharam por toda a terra. Deus viu que a maldade do homem era grande e que todos os seus pensamentos e intenções eram maus. Deus se arrependeu de ter criado o homem e decidiu destruí-lo da face da terra. No entanto, Deus escolheu Noé, um homem justo e íntegro, para salvar a humanidade da destruição. Deus ordenou a Noé que construísse uma arca de madeira para abrigar sua família e um casal de cada espécie de animal, fornecendo instruções precisas sobre as dimensões da arca e os materiais a serem usados. Noé obedeceu a Deus e, com a ajuda de seus filhos, construiu a arca. Por 40 dias e 40 noites, choveu torrencialmente sobre a terra, e as águas cobriram toda a superfície. Todas as criaturas que não estavam na arca pereceram. Após a tempestade cessar, a arca repousou sobre o monte Ararat. Noé enviou uma pomba para verificar se as águas haviam baixado. Quando a pomba voltou com um ramo de oliveira no bico, Noé soube que a terra havia secado. Deus fez uma aliança com Noé, prometendo nunca mais destruir a terra com um dilúvio e estabelecendo o arco-íris como um sinal dessa aliança.`,
 
-    imagem1: "public/imgs/noe/noe_e_Deus.png",
-    imagem2: "public/imgs/noe/noe.png",
+        imagem1: "public/imgs/noe/noe_e_Deus.png",
+        imagem2: "public/imgs/noe/noe.png",
 
-    reflection1: "   A Justiça de Deus: Como você entende a justiça de Deus ao destruir a humanidade no dilúvio? O que podemos aprender sobre as consequências do pecado?",
-    reflection2: "   A Graça de Deus: Apesar da maldade da humanidade, Deus escolheu Noé para salvar sua família e as criaturas. O que isso nos ensina sobre a graça e o amor de Deus?",
-    reflection3: "   A Aliança com Deus: Deus fez uma aliança com Noé, prometendo não destruir a terra com um dilúvio novamente. Como essa aliança nos afeta hoje? Como podemos viver em harmonia com Deus e com o mundo?"
-  },
+        reflection1: "   A Justiça de Deus: Como você entende a justiça de Deus ao destruir a humanidade no dilúvio? O que podemos aprender sobre as consequências do pecado?",
+        reflection2: "   A Graça de Deus: Apesar da maldade da humanidade, Deus escolheu Noé para salvar sua família e as criaturas. O que isso nos ensina sobre a graça e o amor de Deus?",
+        reflection3: "   A Aliança com Deus: Deus fez uma aliança com Noé, prometendo não destruir a terra com um dilúvio novamente. Como essa aliança nos afeta hoje? Como podemos viver em harmonia com Deus e com o mundo?"
+      },
 
-  {
-    id: 5,
-    title: "A Torre de Babel: A Confusão das Línguas",
-    text: `Após o dilúvio, os descendentes de Noé se espalharam pela terra. Em uma região chamada Sinar, eles encontraram uma planície e decidiram construir uma cidade e uma torre tão alta que chegasse ao céu.  Eles queriam se tornar famosos e evitar que se dispersassem pela terra.  Deus viu a arrogância dos homens e sua ambição de desafiá-lo. Ele decidiu confundir a língua deles, para que não mais se entendesse, impedindo a construção da torre.  A partir de então, os homens se dispersaram por toda a terra, cada grupo falando uma língua diferente, incapazes de se comunicar e continuar o projeto da torre.`,
+      {
+        id: 5,
+        title: "A Torre de Babel: A Confusão das Línguas",
+        text: `Após o dilúvio, os descendentes de Noé se espalharam pela terra. Em uma região chamada Sinar, eles encontraram uma planície e decidiram construir uma cidade e uma torre tão alta que chegasse ao céu.  Eles queriam se tornar famosos e evitar que se dispersassem pela terra.  Deus viu a arrogância dos homens e sua ambição de desafiá-lo. Ele decidiu confundir a língua deles, para que não mais se entendesse, impedindo a construção da torre.  A partir de então, os homens se dispersaram por toda a terra, cada grupo falando uma língua diferente, incapazes de se comunicar e continuar o projeto da torre.`,
 
-    imagem1: "public/imgs/torre_babel/contr_torre.png",
-    imagem2: "public/imgs/torre_babel/confusao_torre.png",
+        imagem1: "public/imgs/torre_babel/contr_torre.png",
+        imagem2: "public/imgs/torre_babel/confusao_torre.png",
 
-    reflection1: "   A Arrogância Humana: Como a história da Torre de Babel nos mostra a arrogância do homem? Quais são as tentações de buscar glória e poder que enfrentamos hoje?",
-    reflection2: "   A Unidade na Diversidade:  A confusão das línguas resultou na dispersão dos povos e na diversidade cultural.  Como podemos celebrar a diversidade e buscar a unidade mesmo em meio às diferenças?",
-    reflection3: "   O Plano de Deus: Deus confundiu as línguas para impedir a construção da torre e a dispersão dos homens pela terra.  Como podemos entender o plano de Deus em meio aos desafios da vida?"
-  },
-
+        reflection1: "   A Arrogância Humana: Como a história da Torre de Babel nos mostra a arrogância do homem? Quais são as tentações de buscar glória e poder que enfrentamos hoje?",
+        reflection2: "   A Unidade na Diversidade:  A confusão das línguas resultou na dispersão dos povos e na diversidade cultural.  Como podemos celebrar a diversidade e buscar a unidade mesmo em meio às diferenças?",
+        reflection3: "   O Plano de Deus: Deus confundiu as línguas para impedir a construção da torre e a dispersão dos homens pela terra.  Como podemos entender o plano de Deus em meio aos desafios da vida?"
+      },
 
 
-  {
-    id: 6,
-    title: "Abraão: A Fé e a Promessa",
-    text: `Abraão, inicialmente chamado Abrão, era um homem que vivia na cidade de Ur, na Mesopotâmia. Deus o chamou para deixar sua terra natal e seguir para uma terra que Ele lhe mostraria, prometendo que o tornaria uma grande nação, o abençoaria e o tornaria uma bênção para todas as nações. Abraão, com fé em Deus, deixou tudo para trás e partiu para a terra prometida, a Canaã. Deus fez uma aliança com Abraão, prometendo-lhe muitos descendentes e que sua descendência herdaria a terra prometida. Ele também mudou o nome de Abrão para Abraão, que significa "pai de muitas nações". Abraão, apesar de sua idade avançada e da esterilidade de sua esposa Sara, confiou na promessa de Deus. Deus, em sua misericórdia, abençoou Abraão com um filho, Isaque, fruto da união com Sara.  Ele também testou a fé de Abraão, pedindo-lhe que sacrificasse Isaque, seu filho único, como um ato de obediência. Abraão, confiando em Deus, estava pronto para obedecer, mas Deus o impediu de sacrificar seu filho e providenciou um cordeiro para ser oferecido em seu lugar. Deus abençoou Abraão e sua descendência, e ele se tornou o pai de uma grande nação, o povo de Israel, que mais tarde seria chamado de povo escolhido de Deus.`,
 
-    imagem1: "public/imgs/abraao/abraao.png",
-    imagem2: "public/imgs/abraao/abraão.jpg",
+      {
+        id: 6,
+        title: "Abraão: A Fé e a Promessa",
+        text: `Abraão, inicialmente chamado Abrão, era um homem que vivia na cidade de Ur, na Mesopotâmia. Deus o chamou para deixar sua terra natal e seguir para uma terra que Ele lhe mostraria, prometendo que o tornaria uma grande nação, o abençoaria e o tornaria uma bênção para todas as nações. Abraão, com fé em Deus, deixou tudo para trás e partiu para a terra prometida, a Canaã. Deus fez uma aliança com Abraão, prometendo-lhe muitos descendentes e que sua descendência herdaria a terra prometida. Ele também mudou o nome de Abrão para Abraão, que significa "pai de muitas nações". Abraão, apesar de sua idade avançada e da esterilidade de sua esposa Sara, confiou na promessa de Deus. Deus, em sua misericórdia, abençoou Abraão com um filho, Isaque, fruto da união com Sara.  Ele também testou a fé de Abraão, pedindo-lhe que sacrificasse Isaque, seu filho único, como um ato de obediência. Abraão, confiando em Deus, estava pronto para obedecer, mas Deus o impediu de sacrificar seu filho e providenciou um cordeiro para ser oferecido em seu lugar. Deus abençoou Abraão e sua descendência, e ele se tornou o pai de uma grande nação, o povo de Israel, que mais tarde seria chamado de povo escolhido de Deus.`,
 
-
-    reflection1: "  A Fé e a Obediência: Como a história de Abraão nos mostra a importância da fé e da obediência a Deus? Que desafios você enfrenta ao confiar em Deus e seguir seus mandamentos?",
-    reflection2: "  A Promessa de Deus: Deus fez uma promessa a Abraão, prometendo-lhe uma grande descendência e uma terra.  Como podemos confiar na promessa de Deus em nossas vidas?  O que nos leva a crer nas promessas de Deus?",
-    reflection3: "  O Amor de Deus: Deus testou a fé de Abraão, mas também o livrou de sacrificar seu filho.  O que essa história nos ensina sobre o amor e a misericórdia de Deus? Como podemos experimentar esse amor em nossas vidas?"
-  }
-
-  ,
-  {
-    id: 7,
-    title: "Sodoma e Gomorra: A Destruição das Cidades Perversas",
-    text: `As cidades de Sodoma e Gomorra eram conhecidas por sua grande maldade e pecado. A violência, a injustiça e a perversidade estavam profundamente enraizadas na vida de seus habitantes, e Deus decidiu que essas cidades seriam destruídas devido à gravidade de seus pecados. Abraão, sabendo da decisão de Deus, intercedeu pelas cidades, pedindo que, se houvesse ao menos alguns justos, as cidades fossem poupadas. Deus concordou que, se houvesse pelo menos dez justos em Sodoma, Ele não destruiria a cidade. Dois anjos foram enviados a Sodoma para alertar Ló, sobrinho de Abraão, sobre a iminente destruição. Eles encontraram Ló na entrada da cidade e ele os recebeu em sua casa. No entanto, os homens da cidade cercaram a casa de Ló e tentaram atacar os anjos. Os anjos cegaram os agressores e ordenaram que Ló e sua família fugissem da cidade sem olhar para trás. Ló, sua esposa e suas duas filhas saíram de Sodoma, mas a esposa de Ló desobedeceu às ordens dos anjos e olhou para trás, sendo transformada em uma estátua de sal.  Então, Deus enviou fogo e enxofre sobre Sodoma e Gomorra, destruindo completamente as cidades e seus habitantes. Ló e suas filhas escaparam para uma pequena cidade chamada Zoar, e as cidades pecaminosas deixaram de existir, servindo como um lembrete do julgamento divino sobre a maldade.`,
-
-    imagem1: "public/imgs/sodoma_gomora/sodoma gomora.png",
-    imagem2: "public/imgs/sodoma_gomora/ló.png",
-
-    reflection1: "   O Julgamento de Deus: Como a história de Sodoma e Gomorra nos lembra da justiça e do julgamento de Deus? Como podemos buscar viver de forma justa diante Dele?",
-    reflection2: "   Intercessão e Misericórdia: Abraão intercedeu pelas cidades, mostrando o poder da intercessão. Como essa história pode nos inspirar a orar pelos outros e pedir a misericórdia de Deus?",
-    reflection3: "   Obediência e Consequências: A esposa de Ló desobedeceu a ordem de não olhar para trás e foi transformada em sal. O que isso nos ensina sobre as consequências da desobediência a Deus?"
-  },
+        imagem1: "public/imgs/abraao/abraao.png",
+        imagem2: "public/imgs/abraao/abraão.jpg",
 
 
-  {
-    id: 8,
-    title: "José do Egito: Perdão, Elevação e Redenção",
-    text: `José era o filho predileto de Jacó, o patriarca de Israel, e era invejado por seus irmãos.  Eles, cheios de ciúmes e ódio, o venderam como escravo para mercadores que o levaram para o Egito.  No Egito, José foi comprado por Potifar, um oficial do faraó, e se tornou seu servo.  Deus abençoou José, e ele prosperou em tudo o que fazia. No entanto, a inveja e a maldade o perseguiram, e ele foi falsamente acusado pela esposa de Potifar e preso.  Na prisão, ele interpretou os sonhos de outros presos, revelando sua capacidade especial de interpretar os mistérios de Deus.  O faraó teve sonhos perturbadores e, por meio de um prisioneiro que José havia ajudado, ele soube da capacidade de José de interpretar sonhos.  José foi levado diante do faraó, e interpretou seus sonhos, prevendo uma grande fome que assolaria o Egito. O faraó reconheceu a sabedoria de José e o nomeou governador do Egito, colocando-o no comando da gestão dos recursos e da preparação para a fome. Durante a grande fome, os irmãos de José foram ao Egito em busca de alimentos.  José os reconheceu, mas se fingiu de estrangeiro, testando a mudança de coração dos irmãos.  Após um tempo, José se revelou a seus irmãos, perdoando-os e oferecendo-lhes abrigo e sustento no Egito.  José, com a ajuda de Deus, tornou-se um instrumento de salvação para sua família e para a nação do Egito.`,
+        reflection1: "  A Fé e a Obediência: Como a história de Abraão nos mostra a importância da fé e da obediência a Deus? Que desafios você enfrenta ao confiar em Deus e seguir seus mandamentos?",
+        reflection2: "  A Promessa de Deus: Deus fez uma promessa a Abraão, prometendo-lhe uma grande descendência e uma terra.  Como podemos confiar na promessa de Deus em nossas vidas?  O que nos leva a crer nas promessas de Deus?",
+        reflection3: "  O Amor de Deus: Deus testou a fé de Abraão, mas também o livrou de sacrificar seu filho.  O que essa história nos ensina sobre o amor e a misericórdia de Deus? Como podemos experimentar esse amor em nossas vidas?"
+      }
 
-    imagem1: "public/imgs/joseegito/jose.jpg",
-    imagem2: "public/imgs/joseegito/jose_egito.jpg",
+      ,
+      {
+        id: 7,
+        title: "Sodoma e Gomorra: A Destruição das Cidades Perversas",
+        text: `As cidades de Sodoma e Gomorra eram conhecidas por sua grande maldade e pecado. A violência, a injustiça e a perversidade estavam profundamente enraizadas na vida de seus habitantes, e Deus decidiu que essas cidades seriam destruídas devido à gravidade de seus pecados. Abraão, sabendo da decisão de Deus, intercedeu pelas cidades, pedindo que, se houvesse ao menos alguns justos, as cidades fossem poupadas. Deus concordou que, se houvesse pelo menos dez justos em Sodoma, Ele não destruiria a cidade. Dois anjos foram enviados a Sodoma para alertar Ló, sobrinho de Abraão, sobre a iminente destruição. Eles encontraram Ló na entrada da cidade e ele os recebeu em sua casa. No entanto, os homens da cidade cercaram a casa de Ló e tentaram atacar os anjos. Os anjos cegaram os agressores e ordenaram que Ló e sua família fugissem da cidade sem olhar para trás. Ló, sua esposa e suas duas filhas saíram de Sodoma, mas a esposa de Ló desobedeceu às ordens dos anjos e olhou para trás, sendo transformada em uma estátua de sal.  Então, Deus enviou fogo e enxofre sobre Sodoma e Gomorra, destruindo completamente as cidades e seus habitantes. Ló e suas filhas escaparam para uma pequena cidade chamada Zoar, e as cidades pecaminosas deixaram de existir, servindo como um lembrete do julgamento divino sobre a maldade.`,
 
-    reflection1: "   A Inveja e o Perdão: Como a história de José nos mostra o poder destrutivo da inveja e a importância do perdão? Como podemos superar a inveja e praticar o perdão em nossas vidas?",
-    reflection2: "   A Soberania de Deus: Deus estava com José em todas as circunstâncias, mesmo na prisão. Como podemos confiar na soberania de Deus, mesmo em momentos difíceis?  Deus tem um plano para nossas vidas, mesmo que não o entendamos?",
-    reflection3: "   A Elevação e a Redenção: Apesar de ter sido vendido como escravo e preso, Deus elevou José a uma posição de poder no Egito. Como podemos confiar na promessa de Deus de nos levantar e nos restaurar, mesmo em meio às provações?"
-  },
+        imagem1: "public/imgs/sodoma_gomora/sodoma gomora.png",
+        imagem2: "public/imgs/sodoma_gomora/ló.png",
 
-  {
-    id: 9,
-    title: "José e os Sonhos do Faraó: Sabedoria e Interpretação",
-    text: `Após ser vendido como escravo por seus irmãos e injustamente preso no Egito, José, por sua fé e caráter íntegro, se destacou na prisão. Ele interpretou os sonhos dos companheiros presos, revelando sua capacidade especial de entender os mistérios de Deus. O faraó teve sonhos perturbadores que nenhum dos seus magos conseguiu interpretar.  Um dos prisioneiros, que havia sido ajudado por José, o recomendou ao faraó.  José foi levado diante do faraó e, com a graça de Deus, interpretou os sonhos. No primeiro sonho, o faraó viu sete vacas gordas seguidas de sete vacas magras que devoraram as gordas.  No segundo sonho, ele viu sete espigas de trigo cheias e bonitas seguidas de sete espigas finas e murchas que devoraram as cheias. José interpretou os sonhos como uma profecia de sete anos de fartura, seguidos por sete anos de fome.  Ele aconselhou o faraó a guardar alimentos durante os anos de abundância para que o povo não sofresse durante a fome. Impressionado com a sabedoria de José, o faraó o nomeou governador do Egito, colocando-o no comando da gestão dos recursos e da preparação para a fome.  José, com a graça de Deus, tornou-se um instrumento de salvação para o Egito, e sua sabedoria e capacidade de interpretar os sonhos revelaram a soberania de Deus e a importância de buscar a orientação divina em todas as áreas da vida.`,
-
-    imagem1: "public/imgs/joseeofarao/josegovernaegito.png",
-    imagem2: "public/imgs/joseeofarao/pharao.png",
+        reflection1: "   O Julgamento de Deus: Como a história de Sodoma e Gomorra nos lembra da justiça e do julgamento de Deus? Como podemos buscar viver de forma justa diante Dele?",
+        reflection2: "   Intercessão e Misericórdia: Abraão intercedeu pelas cidades, mostrando o poder da intercessão. Como essa história pode nos inspirar a orar pelos outros e pedir a misericórdia de Deus?",
+        reflection3: "   Obediência e Consequências: A esposa de Ló desobedeceu a ordem de não olhar para trás e foi transformada em sal. O que isso nos ensina sobre as consequências da desobediência a Deus?"
+      },
 
 
-    reflection1: "A Sabedoria de Deus: Como a história de José nos mostra a sabedoria de Deus? Como podemos buscar a orientação divina em nossas vidas?",
-    reflection2: "Interpretação dos Sonhos: José interpretou os sonhos do faraó, revelando uma mensagem importante. Como podemos entender os sonhos e as mensagens de Deus?",
-    reflection3: "Preparo para o Futuro: José preparou o Egito para a fome, mostrando a importância da previdência e do planejamento. Como podemos nos preparar para os desafios e oportunidades do futuro?"
-  },
+      {
+        id: 8,
+        title: "José do Egito: Perdão, Elevação e Redenção",
+        text: `José era o filho predileto de Jacó, o patriarca de Israel, e era invejado por seus irmãos.  Eles, cheios de ciúmes e ódio, o venderam como escravo para mercadores que o levaram para o Egito.  No Egito, José foi comprado por Potifar, um oficial do faraó, e se tornou seu servo.  Deus abençoou José, e ele prosperou em tudo o que fazia. No entanto, a inveja e a maldade o perseguiram, e ele foi falsamente acusado pela esposa de Potifar e preso.  Na prisão, ele interpretou os sonhos de outros presos, revelando sua capacidade especial de interpretar os mistérios de Deus.  O faraó teve sonhos perturbadores e, por meio de um prisioneiro que José havia ajudado, ele soube da capacidade de José de interpretar sonhos.  José foi levado diante do faraó, e interpretou seus sonhos, prevendo uma grande fome que assolaria o Egito. O faraó reconheceu a sabedoria de José e o nomeou governador do Egito, colocando-o no comando da gestão dos recursos e da preparação para a fome. Durante a grande fome, os irmãos de José foram ao Egito em busca de alimentos.  José os reconheceu, mas se fingiu de estrangeiro, testando a mudança de coração dos irmãos.  Após um tempo, José se revelou a seus irmãos, perdoando-os e oferecendo-lhes abrigo e sustento no Egito.  José, com a ajuda de Deus, tornou-se um instrumento de salvação para sua família e para a nação do Egito.`,
 
+        imagem1: "public/imgs/joseegito/jose.jpg",
+        imagem2: "public/imgs/joseegito/jose_egito.jpg",
+
+        reflection1: "   A Inveja e o Perdão: Como a história de José nos mostra o poder destrutivo da inveja e a importância do perdão? Como podemos superar a inveja e praticar o perdão em nossas vidas?",
+        reflection2: "   A Soberania de Deus: Deus estava com José em todas as circunstâncias, mesmo na prisão. Como podemos confiar na soberania de Deus, mesmo em momentos difíceis?  Deus tem um plano para nossas vidas, mesmo que não o entendamos?",
+        reflection3: "   A Elevação e a Redenção: Apesar de ter sido vendido como escravo e preso, Deus elevou José a uma posição de poder no Egito. Como podemos confiar na promessa de Deus de nos levantar e nos restaurar, mesmo em meio às provações?"
+      },
+
+      {
+        id: 9,
+        title: "José e os Sonhos do Faraó: Sabedoria e Interpretação",
+        text: `Após ser vendido como escravo por seus irmãos e injustamente preso no Egito, José, por sua fé e caráter íntegro, se destacou na prisão. Ele interpretou os sonhos dos companheiros presos, revelando sua capacidade especial de entender os mistérios de Deus. O faraó teve sonhos perturbadores que nenhum dos seus magos conseguiu interpretar.  Um dos prisioneiros, que havia sido ajudado por José, o recomendou ao faraó.  José foi levado diante do faraó e, com a graça de Deus, interpretou os sonhos. No primeiro sonho, o faraó viu sete vacas gordas seguidas de sete vacas magras que devoraram as gordas.  No segundo sonho, ele viu sete espigas de trigo cheias e bonitas seguidas de sete espigas finas e murchas que devoraram as cheias. José interpretou os sonhos como uma profecia de sete anos de fartura, seguidos por sete anos de fome.  Ele aconselhou o faraó a guardar alimentos durante os anos de abundância para que o povo não sofresse durante a fome. Impressionado com a sabedoria de José, o faraó o nomeou governador do Egito, colocando-o no comando da gestão dos recursos e da preparação para a fome.  José, com a graça de Deus, tornou-se um instrumento de salvação para o Egito, e sua sabedoria e capacidade de interpretar os sonhos revelaram a soberania de Deus e a importância de buscar a orientação divina em todas as áreas da vida.`,
+
+        imagem1: "public/imgs/joseeofarao/josegovernaegito.png",
+        imagem2: "public/imgs/joseeofarao/pharao.png",
+
+
+        reflection1: "A Sabedoria de Deus: Como a história de José nos mostra a sabedoria de Deus? Como podemos buscar a orientação divina em nossas vidas?",
+        reflection2: "Interpretação dos Sonhos: José interpretou os sonhos do faraó, revelando uma mensagem importante. Como podemos entender os sonhos e as mensagens de Deus?",
+        reflection3: "Preparo para o Futuro: José preparou o Egito para a fome, mostrando a importância da previdência e do planejamento. Como podemos nos preparar para os desafios e oportunidades do futuro?"
+      },
 
 
 
 
-  {
-    id: 10,
-    title: "Jó: A Fidelidade Provada",
-    text: `Jó era um homem justo, íntegro e temente a Deus. Ele possuía grande riqueza, muitos filhos e era abençoado por Deus. No entanto, Satanás, o adversário, desafiou a fidelidade de Jó diante de Deus, afirmando que ele só servia a Deus por interesse próprio. Deus permitiu que Satanás testasse Jó, concedendo-lhe permissão para tirar tudo o que tinha, desde suas riquezas até seus filhos, além de acometê-lo com uma doença terrível.  Apesar de sua dor imensa e das perdas profundas, Jó manteve sua fé em Deus e se recusou a amaldiçoá-lo.  Amigos de Jó vieram consolá-lo, mas muitas vezes o acusavam de estar sofrendo por causa de seus próprios pecados.  Jó, no entanto, defendeu sua integridade e sua fé, afirmando que era inocente e que seu sofrimento não podia ser explicado por erros que tivesse cometido. Deus então se manifestou em meio a uma tempestade, respondendo a Jó e mostrando sua grandeza. Ele revelou que as razões do sofrimento vão além da compreensão humana, e que tudo está sob seu controle. Para demonstrar Seu poder, Deus falou sobre criaturas imponentes, como o Beemote e o Leviatã, representações do caos e das forças incontroláveis da natureza. Ele explicou que, se o homem não pode dominar essas criaturas, muito menos pode entender todos os seus desígnios divinos.  Ao final, Deus restaurou a vida de Jó. Ele deu a Jó o dobro de suas posses, mais filhos, e restaurou sua saúde. A história de Jó nos ensina sobre a importância da fé e da perseverança, mesmo diante de grandes provações, e nos mostra que Deus, em Sua sabedoria e soberania, controla todas as coisas, mesmo quando não compreendemos Seus planos.`,
 
-    imagem1: "public/imgs/jo/jo.png",
-    imagem2: "public/imgs/jo/jó.jpg",
+      {
+        id: 10,
+        title: "Jó: A Fidelidade Provada",
+        text: `Jó era um homem justo, íntegro e temente a Deus. Ele possuía grande riqueza, muitos filhos e era abençoado por Deus. No entanto, Satanás, o adversário, desafiou a fidelidade de Jó diante de Deus, afirmando que ele só servia a Deus por interesse próprio. Deus permitiu que Satanás testasse Jó, concedendo-lhe permissão para tirar tudo o que tinha, desde suas riquezas até seus filhos, além de acometê-lo com uma doença terrível.  Apesar de sua dor imensa e das perdas profundas, Jó manteve sua fé em Deus e se recusou a amaldiçoá-lo.  Amigos de Jó vieram consolá-lo, mas muitas vezes o acusavam de estar sofrendo por causa de seus próprios pecados.  Jó, no entanto, defendeu sua integridade e sua fé, afirmando que era inocente e que seu sofrimento não podia ser explicado por erros que tivesse cometido. Deus então se manifestou em meio a uma tempestade, respondendo a Jó e mostrando sua grandeza. Ele revelou que as razões do sofrimento vão além da compreensão humana, e que tudo está sob seu controle. Para demonstrar Seu poder, Deus falou sobre criaturas imponentes, como o Beemote e o Leviatã, representações do caos e das forças incontroláveis da natureza. Ele explicou que, se o homem não pode dominar essas criaturas, muito menos pode entender todos os seus desígnios divinos.  Ao final, Deus restaurou a vida de Jó. Ele deu a Jó o dobro de suas posses, mais filhos, e restaurou sua saúde. A história de Jó nos ensina sobre a importância da fé e da perseverança, mesmo diante de grandes provações, e nos mostra que Deus, em Sua sabedoria e soberania, controla todas as coisas, mesmo quando não compreendemos Seus planos.`,
+
+        imagem1: "public/imgs/jo/jo.png",
+        imagem2: "public/imgs/jo/jó.jpg",
 
 
-    reflection1: "  O Sofrimento e a Fidelidade: Como a história de Jó nos ajuda a entender o sofrimento? Como podemos permanecer fiéis a Deus, mesmo em meio à dor e à provação?",
-    reflection2: "  A Soberania de Deus: Deus permitiu que Jó sofresse, mas também o restaurou. O que essa história nos ensina sobre a soberania e o amor de Deus? Como podemos confiar em Deus, mesmo quando não entendemos seus planos?",
-    reflection3: "  O Perdão e a Restauração: Deus perdoou Jó e o restaurou. Como podemos buscar o perdão de Deus e a restauração em nossas vidas? Como podemos encontrar esperança em meio ao sofrimento?"
-  },
+        reflection1: "  O Sofrimento e a Fidelidade: Como a história de Jó nos ajuda a entender o sofrimento? Como podemos permanecer fiéis a Deus, mesmo em meio à dor e à provação?",
+        reflection2: "  A Soberania de Deus: Deus permitiu que Jó sofresse, mas também o restaurou. O que essa história nos ensina sobre a soberania e o amor de Deus? Como podemos confiar em Deus, mesmo quando não entendemos seus planos?",
+        reflection3: "  O Perdão e a Restauração: Deus perdoou Jó e o restaurou. Como podemos buscar o perdão de Deus e a restauração em nossas vidas? Como podemos encontrar esperança em meio ao sofrimento?"
+      },
 
-  {
-    id: 11,
-    title: "Moisés: O Libertador do Povo de Israel",
-    text: `Moisés nasceu em uma época em que o povo de Israel era escravo no Egito. Para impedir que os bebês israelitas fossem mortos, sua mãe o colocou em uma cesta e o deixou flutuar no rio Nilo.  A filha do faraó encontrou a cesta e o adotou, dando-lhe o nome de Moisés.
+      {
+        id: 11,
+        title: "Moisés: O Libertador do Povo de Israel",
+        text: `Moisés nasceu em uma época em que o povo de Israel era escravo no Egito. Para impedir que os bebês israelitas fossem mortos, sua mãe o colocou em uma cesta e o deixou flutuar no rio Nilo.  A filha do faraó encontrou a cesta e o adotou, dando-lhe o nome de Moisés.
   
         Moisés cresceu no palácio, mas, ao descobrir suas origens israelitas, ele se identificou com seu povo e se revoltou contra a opressão egípcia.  Em um ato de defesa de um israelita, ele matou um egípcio que estava espancando um israelita, e fugiu para o deserto.  Esse ato, embora movido por justiça, o marcou profundamente, e ele passou 40 anos no deserto, trabalhando como pastor de ovelhas.
   
@@ -482,22 +187,22 @@ body {
   
         Moisés é considerado um dos líderes mais importantes da história judaica.  Sua história é uma jornada de fé, perseverança e obediência à vontade de Deus, que o guiou na missão de libertar seu povo e conduzi-lo à liberdade.`,
 
-    imagem1: "public/imgs/moises/moises-sarsa-ardente.png",
-    imagem2: "public/imgs/moises/moises.jpg",
+        imagem1: "public/imgs/moises/moises-sarsa-ardente.png",
+        imagem2: "public/imgs/moises/moises.jpg",
 
 
-    reflection1: "A Libertação: Como a história de Moisés nos inspira a lutar por liberdade e justiça? Que desafios você enfrenta na busca por justiça para você e para os outros?",
-    reflection2: "A Aliança com Deus:  Deus fez uma aliança com o povo de Israel através de Moisés, dando-lhes a Lei.  Como essa aliança nos afeta hoje? Como podemos viver em obediência à vontade de Deus?",
-    reflection3: "A Liderança:  Moisés foi um líder que guiou seu povo por 40 anos no deserto.  O que podemos aprender com a liderança de Moisés?  Quais são os desafios e as recompensas de ser um líder?",
-    reflection4: "O Perdão: Moisés cometeu um erro, mas Deus o perdoou e o escolheu para ser o libertador de seu povo.  Como podemos buscar o perdão de Deus e a restauração em nossas vidas?"
-  },
+        reflection1: "A Libertação: Como a história de Moisés nos inspira a lutar por liberdade e justiça? Que desafios você enfrenta na busca por justiça para você e para os outros?",
+        reflection2: "A Aliança com Deus:  Deus fez uma aliança com o povo de Israel através de Moisés, dando-lhes a Lei.  Como essa aliança nos afeta hoje? Como podemos viver em obediência à vontade de Deus?",
+        reflection3: "A Liderança:  Moisés foi um líder que guiou seu povo por 40 anos no deserto.  O que podemos aprender com a liderança de Moisés?  Quais são os desafios e as recompensas de ser um líder?",
+        reflection4: "O Perdão: Moisés cometeu um erro, mas Deus o perdoou e o escolheu para ser o libertador de seu povo.  Como podemos buscar o perdão de Deus e a restauração em nossas vidas?"
+      },
 
 
 
-  {
-    id: 12,
-    title: "As Dez Pragas do Egito: O Julgamento Divino",
-    text: `Após Moisés e Arão se apresentarem ao faraó, pedindo a libertação do povo de Israel, o coração do faraó se endureceu. Ele se recusou a liberar o povo, e Deus decidiu enviar dez pragas sobre o Egito para mostrar seu poder e forçar o faraó a obedecer.
+      {
+        id: 12,
+        title: "As Dez Pragas do Egito: O Julgamento Divino",
+        text: `Após Moisés e Arão se apresentarem ao faraó, pedindo a libertação do povo de Israel, o coração do faraó se endureceu. Ele se recusou a liberar o povo, e Deus decidiu enviar dez pragas sobre o Egito para mostrar seu poder e forçar o faraó a obedecer.
   
         A primeira praga transformou a água do rio Nilo em sangue. As águas ficaram impróprias para o consumo e provocaram a morte de peixes. As pragas seguintes incluíram: 
         * Rãs que invadiram o país em grande número.
@@ -515,20 +220,20 @@ body {
   
         As dez pragas foram um ato de julgamento de Deus sobre o faraó e o Egito, mas também um sinal de poder e autoridade, mostrando a necessidade de obediência e respeito à vontade de Deus.  A história das pragas do Egito serve como um lembrete das consequências da desobediência e da necessidade de buscar a justiça e a liberdade para todos.`,
 
-    imagem1: "public/imgs/10pragasegito/egitopragas.png",
-    imagem2: "public/imgs/10pragasegito/egitoanjodamorte.png",
+        imagem1: "public/imgs/10pragasegito/egitopragas.png",
+        imagem2: "public/imgs/10pragasegito/egitoanjodamorte.png",
 
-    reflection1: "O Poder de Deus:  Como a história das pragas do Egito nos mostra o poder de Deus?  Como esse poder se manifesta em nossas vidas?",
-    reflection2: "A Desobediência:  O faraó se recusou a obedecer a Deus.  Quais são as consequências da desobediência em nossas vidas?  Como podemos buscar a obediência a Deus?",
-    reflection3: "A Justiça: As pragas foram um ato de justiça de Deus contra a opressão do povo de Israel. Como podemos buscar justiça em nossas vidas?  Como podemos lutar contra a injustiça?"
-  },
+        reflection1: "O Poder de Deus:  Como a história das pragas do Egito nos mostra o poder de Deus?  Como esse poder se manifesta em nossas vidas?",
+        reflection2: "A Desobediência:  O faraó se recusou a obedecer a Deus.  Quais são as consequências da desobediência em nossas vidas?  Como podemos buscar a obediência a Deus?",
+        reflection3: "A Justiça: As pragas foram um ato de justiça de Deus contra a opressão do povo de Israel. Como podemos buscar justiça em nossas vidas?  Como podemos lutar contra a injustiça?"
+      },
 
 
 
-  {
-    id: 13,
-    title: "A Arca da Aliança: A Presença de Deus",
-    text: `A história da Arca da Aliança é um dos relatos mais importantes e enigmáticos do Antigo Testamento. Ela representa a presença de Deus entre o povo de Israel, e sua construção é descrita em detalhes no livro de Êxodo.
+      {
+        id: 13,
+        title: "A Arca da Aliança: A Presença de Deus",
+        text: `A história da Arca da Aliança é um dos relatos mais importantes e enigmáticos do Antigo Testamento. Ela representa a presença de Deus entre o povo de Israel, e sua construção é descrita em detalhes no livro de Êxodo.
   
       Deus instruiu Moisés a construir a Arca da Aliança no monte Sinai, após a libertação do povo de Israel do Egito. A ordem foi dada durante a entrega dos Dez Mandamentos, mostrando a importância da Arca para a aliança entre Deus e seu povo. A Arca era feita de madeira de acácia, revestida de ouro puro por dentro e por fora. No interior, havia duas placas de ouro, chamadas de "Tábuas da Lei", nas quais estavam gravados os Dez Mandamentos que Deus havia dado a Moisés.
   
@@ -542,19 +247,19 @@ body {
   
       A Arca da Aliança continua sendo um símbolo poderoso da presença de Deus e da aliança de Deus com seu povo. Seu significado transcende a história e nos lembra que Deus sempre esteve presente com seu povo e continua presente com aqueles que o buscam.`,
 
-    imagem1: "public/imgs/moisesarcadaalianca/arca.jpeg",
-    imagem2: "public/imgs/moisesarcadaalianca/tabernaculo.png",
+        imagem1: "public/imgs/moisesarcadaalianca/arca.jpeg",
+        imagem2: "public/imgs/moisesarcadaalianca/tabernaculo.png",
 
-    reflection1: "O Significado da Arca:  Como a Arca da Aliança representa a presença e a proteção de Deus?  Como essa imagem nos inspira a buscar a presença de Deus em nossas vidas?",
-    reflection2: "A Aliança com Deus:  A Arca é um símbolo da aliança entre Deus e seu povo.  Como podemos fortalecer nossa aliança com Deus?  Como podemos viver em obediência à sua vontade?",
-    reflection3: "O Mistério da Arca: A Arca desapareceu após a destruição do Templo de Salomão.  O que essa história nos ensina sobre o poder de Deus e a importância da fé, mesmo em meio aos mistérios?",
-  },
+        reflection1: "O Significado da Arca:  Como a Arca da Aliança representa a presença e a proteção de Deus?  Como essa imagem nos inspira a buscar a presença de Deus em nossas vidas?",
+        reflection2: "A Aliança com Deus:  A Arca é um símbolo da aliança entre Deus e seu povo.  Como podemos fortalecer nossa aliança com Deus?  Como podemos viver em obediência à sua vontade?",
+        reflection3: "O Mistério da Arca: A Arca desapareceu após a destruição do Templo de Salomão.  O que essa história nos ensina sobre o poder de Deus e a importância da fé, mesmo em meio aos mistérios?",
+      },
 
 
-  {
-    id: 14,
-    title: "Moisés: O Fim de uma Jornada",
-    text: `Após 40 anos guiando o povo de Israel pelo deserto, Moisés finalmente avistou a Terra Prometida, a terra que Deus havia prometido a Abraão e seus descendentes.  No entanto, em meio à alegria da chegada, Deus, em sua justiça, proibiu Moisés de entrar na Terra Prometida. 
+      {
+        id: 14,
+        title: "Moisés: O Fim de uma Jornada",
+        text: `Após 40 anos guiando o povo de Israel pelo deserto, Moisés finalmente avistou a Terra Prometida, a terra que Deus havia prometido a Abraão e seus descendentes.  No entanto, em meio à alegria da chegada, Deus, em sua justiça, proibiu Moisés de entrar na Terra Prometida. 
   
         A proibição estava relacionada a um ato de desobediência de Moisés: a falta de fé e o gesto de ira ao bater na rocha com seu cajado para tirar água para o povo, como Deus havia ordenado.  Moisés, impaciente e irritado com a murmuração do povo, feriu a rocha duas vezes, em vez de simplesmente falar com ela como Deus havia instruído, demonstrando falta de fé.  
         
@@ -566,71 +271,71 @@ body {
 
         A história de Moisés nos ensina sobre a importância de viver em obediência à vontade de Deus, buscando sua orientação em todos os momentos.  Deus sempre nos guiará pelo melhor caminho, mesmo que não o entendamos.`,
 
-    imagem1: "public/imgs/moisesfinal/leis.png",
-    imagem2: "public/imgs/moisesfinal/bezerroouro.png",
+        imagem1: "public/imgs/moisesfinal/leis.png",
+        imagem2: "public/imgs/moisesfinal/bezerroouro.png",
 
-    reflection1: "Os Dez Mandamentos:  Como os Dez Mandamentos moldaram a história de Israel?  Que impacto esses princípios têm em nossas vidas?  Como podemos viver de acordo com a vontade de Deus?",
-    reflection2: "A Idolatria:  A adoração do bezerro de ouro foi um ato de desobediência a Deus.  Quais são as formas de idolatria em nossos tempos?  Como podemos evitar se desviar do caminho de Deus?",
-    reflection3: "A Proibição de Moisés:  Deus proibiu Moisés de entrar na Terra Prometida.  O que podemos aprender sobre a justiça de Deus e as consequências do pecado?",
+        reflection1: "Os Dez Mandamentos:  Como os Dez Mandamentos moldaram a história de Israel?  Que impacto esses princípios têm em nossas vidas?  Como podemos viver de acordo com a vontade de Deus?",
+        reflection2: "A Idolatria:  A adoração do bezerro de ouro foi um ato de desobediência a Deus.  Quais são as formas de idolatria em nossos tempos?  Como podemos evitar se desviar do caminho de Deus?",
+        reflection3: "A Proibição de Moisés:  Deus proibiu Moisés de entrar na Terra Prometida.  O que podemos aprender sobre a justiça de Deus e as consequências do pecado?",
 
-  },
-
-
+      },
 
 
 
 
-  {
-    id: 15,
-    title: "Josué: A Conquista da Terra Prometida",
-    text: `Após a morte de Moisés, Deus escolheu Josué para liderar o povo de Israel na conquista da Terra Prometida, a terra que Deus havia prometido a Abraão e seus descendentes.  Josué, com a orientação de Deus, conduziu o povo através do Rio Jordão, abrindo milagrosamente as águas para que eles passassem.  Com fé e coragem, Josué liderou o povo na batalha contra os cananeus, os habitantes da Terra Prometida.
+
+
+      {
+        id: 15,
+        title: "Josué: A Conquista da Terra Prometida",
+        text: `Após a morte de Moisés, Deus escolheu Josué para liderar o povo de Israel na conquista da Terra Prometida, a terra que Deus havia prometido a Abraão e seus descendentes.  Josué, com a orientação de Deus, conduziu o povo através do Rio Jordão, abrindo milagrosamente as águas para que eles passassem.  Com fé e coragem, Josué liderou o povo na batalha contra os cananeus, os habitantes da Terra Prometida.
     
           Deus deu a Josué uma estratégia de guerra para conquistar as cidades cananeias, e ele, confiante na promessa de Deus, venceu as batalhas, conquistando a terra e dividindo-a entre as tribos de Israel.  Josué, guiado pela presença de Deus, liderou o povo na conquista da Terra Prometida, mostrando a importância da fé e da obediência à vontade de Deus.  Ele também estabeleceu um altar em monte Ebal para que o povo repetisse as bênçãos e as maldições da Lei de Deus, garantindo a continuidade da aliança entre Deus e o povo.
     
           A história de Josué é uma história de conquista, fé e obediência. Ele liderou o povo de Israel na jornada para a Terra Prometida, enfrentando desafios e vencendo obstáculos com a ajuda de Deus. Sua história nos mostra a importância de confiar em Deus, mesmo em meio aos desafios, e seguir Seus planos para nossas vidas.`,
 
-    imagem1: "public/imgs/josue/josue.webp",
-    imagem2: "public/imgs/josue/josuebatalha.png",
+        imagem1: "public/imgs/josue/josue.webp",
+        imagem2: "public/imgs/josue/josuebatalha.png",
 
-    reflection1: "A Conquista da Terra Prometida: Como a história de Josué nos inspira a conquistar nossos sonhos e objetivos? Como podemos confiar na promessa de Deus para nossas vidas?",
-    reflection2: "A Obediência a Deus:  Josué obedeceu à vontade de Deus e liderou o povo na conquista da Terra Prometida. Como podemos buscar a obediência a Deus em nossas vidas?",
-    reflection3: "A Fé Inabalável: Josué confiou em Deus, mesmo em meio a grandes desafios.  Como podemos fortalecer nossa fé em Deus?  Quais são os desafios que enfrentamos em nossa fé?",
+        reflection1: "A Conquista da Terra Prometida: Como a história de Josué nos inspira a conquistar nossos sonhos e objetivos? Como podemos confiar na promessa de Deus para nossas vidas?",
+        reflection2: "A Obediência a Deus:  Josué obedeceu à vontade de Deus e liderou o povo na conquista da Terra Prometida. Como podemos buscar a obediência a Deus em nossas vidas?",
+        reflection3: "A Fé Inabalável: Josué confiou em Deus, mesmo em meio a grandes desafios.  Como podemos fortalecer nossa fé em Deus?  Quais são os desafios que enfrentamos em nossa fé?",
 
-  },
-  {
-    id: 16,
-    title: "Josué e a Conquista de Jericó: Fé e Obediência",
-    text: `Após cruzar o Rio Jordão, o povo de Israel se preparou para conquistar Jericó, a primeira cidade na Terra Prometida. Jericó era uma cidade fortificada com muros altos e imponentes, considerada inexpugnável. 
+      },
+      {
+        id: 16,
+        title: "Josué e a Conquista de Jericó: Fé e Obediência",
+        text: `Após cruzar o Rio Jordão, o povo de Israel se preparou para conquistar Jericó, a primeira cidade na Terra Prometida. Jericó era uma cidade fortificada com muros altos e imponentes, considerada inexpugnável. 
     
     Deus instruiu Josué a marchar ao redor da cidade com a Arca da Aliança por sete dias seguidos. A cada dia, os soldados deveriam marchar uma vez ao redor da cidade em silêncio, carregando a Arca. No sétimo dia, eles deveriam marchar ao redor da cidade sete vezes, tocando trombetas e gritando. Deus prometeu que, ao som das trombetas e do grito, os muros da cidade cairiam.
     
     Josué, com fé inabalável em Deus, obedeceu às instruções. Os soldados marcharam em silêncio, carregando a Arca, dia após dia, e no sétimo dia, eles marcharam sete vezes ao redor da cidade, tocando trombetas e gritando. Quando a sétima trombeta soou, os muros de Jericó desabaram, e os israelitas entraram na cidade e a conquistaram.
     
     A conquista de Jericó demonstra a importância da fé e da obediência a Deus. Josué confiava em Deus e seguia suas instruções, mesmo que parecessem impossíveis. A vitória de Jericó fortaleceu a fé do povo de Israel e mostrou a todos que Deus é poderoso e fiel às suas promessas.`,
-    imagem1: "public/imgs/josuejerico/jerico.webp",
-    imagem2: "public/imgs/josuejerico/muralhajerico.webp",
-    reflection1: "A Arca da Aliança: Como a Arca da Aliança desempenhou um papel crucial na conquista de Jericó? O que ela representa para o povo de Israel?",
-    reflection2: "A Importância da Obediência: Por que a obediência a Deus foi essencial para a vitória de Josué em Jericó? O que podemos aprender sobre a importância de seguir a vontade de Deus em nossas vidas?",
-    reflection3: "A Fé em Deus: Josué confiou em Deus e obedeceu a suas instruções, mesmo que parecessem impossíveis. Como podemos fortalecer nossa fé em Deus? Como podemos confiar em sua promessa de vitória em nossas vidas?",
-  },
-  {
-    id: 17,
-    title: "A Época dos Juízes: Liberdade e Desobediência",
-    text: `Após a morte de Josué, o povo de Israel não teve um rei ou líder unificado. Eles viviam em um período de transição, marcado por ciclos de desobediência a Deus, opressão por inimigos e a intervenção divina através de Juízes. Esses líderes, escolhidos por Deus, guiavam Israel de volta à obediência e à libertação. 
+        imagem1: "public/imgs/josuejerico/jerico.webp",
+        imagem2: "public/imgs/josuejerico/muralhajerico.webp",
+        reflection1: "A Arca da Aliança: Como a Arca da Aliança desempenhou um papel crucial na conquista de Jericó? O que ela representa para o povo de Israel?",
+        reflection2: "A Importância da Obediência: Por que a obediência a Deus foi essencial para a vitória de Josué em Jericó? O que podemos aprender sobre a importância de seguir a vontade de Deus em nossas vidas?",
+        reflection3: "A Fé em Deus: Josué confiou em Deus e obedeceu a suas instruções, mesmo que parecessem impossíveis. Como podemos fortalecer nossa fé em Deus? Como podemos confiar em sua promessa de vitória em nossas vidas?",
+      },
+      {
+        id: 17,
+        title: "A Época dos Juízes: Liberdade e Desobediência",
+        text: `Após a morte de Josué, o povo de Israel não teve um rei ou líder unificado. Eles viviam em um período de transição, marcado por ciclos de desobediência a Deus, opressão por inimigos e a intervenção divina através de Juízes. Esses líderes, escolhidos por Deus, guiavam Israel de volta à obediência e à libertação. 
     
     O povo de Israel frequentemente se deixava levar pela idolatria, adorando outros deuses e abandonando o Deus que os havia libertado do Egito. Como consequência, eles enfrentavam a opressão de povos inimigos, como os cananeus, os filisteus e os midianitas. Deus, em sua misericórdia, levantava Juízes para libertar seu povo, mas o ciclo de pecado, sofrimento e arrependimento se repetia.  
           
     A Época dos Juízes, embora marcada por desafios, demonstra a fidelidade de Deus ao seu povo, mesmo em meio à desobediência. Deus sempre enviava um salvador para libertar seu povo da opressão e guiá-lo de volta ao caminho da obediência. Essa época nos ensina sobre a importância de buscar a Deus, viver em obediência a sua vontade e resistir às tentações de idolatria e desvio.`,
-    imagem1: "public/imgs/juizes/juizes.png",
-    imagem2: "public/imgs/juizes/juizes1.png",
-    reflection1: "A Falta de Liderança Centralizada: Como a ausência de um líder unificado impactou a vida do povo de Israel? Que lições podemos tirar sobre a importância de uma liderança justa e sábia?",
-    reflection2: "O Ciclo de Desobediência e Libertação: O povo de Israel repetia o ciclo de desobediência a Deus, sofrimento e arrependimento. Como podemos evitar cair nesse ciclo em nossas vidas? Como podemos fortalecer nossa fé e permanecer fiéis a Deus?",
-    reflection3: "Os Juízes: Deus levantava líderes para libertar seu povo. Quais são os atributos de um líder que nos inspira? Como podemos ser líderes que guiam outros para a justiça e a fé?",
-  },
-  {
-    id: 18,
-    title: "Sansão: Força e Fraqueza",
-    text: `Sansão nasceu em uma época em que Israel era dominado pelos filisteus. Ele era nazireu desde o nascimento, dedicado a Deus, e possuía uma força sobre-humana. Deus o havia escolhido para libertar Israel da opressão dos filisteus.
+        imagem1: "public/imgs/juizes/juizes.png",
+        imagem2: "public/imgs/juizes/juizes1.png",
+        reflection1: "A Falta de Liderança Centralizada: Como a ausência de um líder unificado impactou a vida do povo de Israel? Que lições podemos tirar sobre a importância de uma liderança justa e sábia?",
+        reflection2: "O Ciclo de Desobediência e Libertação: O povo de Israel repetia o ciclo de desobediência a Deus, sofrimento e arrependimento. Como podemos evitar cair nesse ciclo em nossas vidas? Como podemos fortalecer nossa fé e permanecer fiéis a Deus?",
+        reflection3: "Os Juízes: Deus levantava líderes para libertar seu povo. Quais são os atributos de um líder que nos inspira? Como podemos ser líderes que guiam outros para a justiça e a fé?",
+      },
+      {
+        id: 18,
+        title: "Sansão: Força e Fraqueza",
+        text: `Sansão nasceu em uma época em que Israel era dominado pelos filisteus. Ele era nazireu desde o nascimento, dedicado a Deus, e possuía uma força sobre-humana. Deus o havia escolhido para libertar Israel da opressão dos filisteus.
       
     Desde a infância, Sansão era abençoado com uma força extraordinária, e seus cabelos, que nunca foram cortados, eram a fonte de sua força. Ele realizou grandes feitos, derrotando os filisteus e defendendo Israel. Ele matou um leão com suas mãos e, com a mandíbula de um jumento, derrotou 1.000 soldados filisteus.
       
@@ -641,16 +346,16 @@ body {
     Sansão, mesmo sem sua força física, ainda era um instrumento de Deus. Ele usou sua última força para derrubar as colunas do templo filisteu, matando a si mesmo e muitos filisteus, incluindo seus opressores. 
       
     A história de Sansão nos mostra que a força física não é tudo e que, mesmo com grandes poderes, a fragilidade humana pode nos levar a cometer erros. Ele também nos ensina sobre a importância de resistir às tentações e de buscar a orientação de Deus em todas as áreas da vida.`,
-    imagem1: "public/imgs/sansao/sansao.png",
-    imagem2: "public/imgs/sansao/sansaotemplo.webp",
-    reflection1: "A Força e a Fraqueza: Como a história de Sansão nos mostra a importância de reconhecer nossas fraquezas e buscar a força em Deus?",
-    reflection2: "A Tentação: Sansão foi seduzido pela beleza e pelas armadilhas do mundo. Como podemos resistir às tentações e buscar a proteção de Deus?",
-    reflection3: "A Fé e a Obediência: Deus havia dado a Sansão uma missão, mas ele falhou em seguir os mandamentos de Deus e obedecer à sua vontade. O que podemos aprender sobre a importância da fé e da obediência a Deus?",
-  },
-  {
-    id: 19,
-    title: "Samuel: O Profeta que Ouviu a Voz de Deus",
-    text: `A história de Samuel começa antes mesmo de seu nascimento, com sua mãe, Ana, que enfrentava grande sofrimento por ser estéril. Ana era casada com Elcana, e, embora ele a amasse profundamente, ela sofria por não poder ter filhos. Além disso, Ana era provocada constantemente por Penina, a outra esposa de Elcana, que tinha filhos e a ridicularizava por sua infertilidade.
+        imagem1: "public/imgs/sansao/sansao.png",
+        imagem2: "public/imgs/sansao/sansaotemplo.webp",
+        reflection1: "A Força e a Fraqueza: Como a história de Sansão nos mostra a importância de reconhecer nossas fraquezas e buscar a força em Deus?",
+        reflection2: "A Tentação: Sansão foi seduzido pela beleza e pelas armadilhas do mundo. Como podemos resistir às tentações e buscar a proteção de Deus?",
+        reflection3: "A Fé e a Obediência: Deus havia dado a Sansão uma missão, mas ele falhou em seguir os mandamentos de Deus e obedecer à sua vontade. O que podemos aprender sobre a importância da fé e da obediência a Deus?",
+      },
+      {
+        id: 19,
+        title: "Samuel: O Profeta que Ouviu a Voz de Deus",
+        text: `A história de Samuel começa antes mesmo de seu nascimento, com sua mãe, Ana, que enfrentava grande sofrimento por ser estéril. Ana era casada com Elcana, e, embora ele a amasse profundamente, ela sofria por não poder ter filhos. Além disso, Ana era provocada constantemente por Penina, a outra esposa de Elcana, que tinha filhos e a ridicularizava por sua infertilidade.
   
     O coração de Ana estava pesado, e sua tristeza a levava a buscar consolo em Deus. Em uma de suas visitas ao templo em Siló, Ana orou fervorosamente, chorando amargamente e derramando seu coração diante de Deus. Ela fez um voto solene, dizendo que se Deus lhe desse um filho, ela o dedicaria ao Senhor por toda a sua vida. O sacerdote Eli, que a observava de longe, inicialmente pensou que Ana estava embriagada devido à intensidade de sua oração silenciosa e aflita, mas ao perceber seu desespero, Eli abençoou-a, dizendo que Deus atenderia seu pedido.
   
@@ -659,32 +364,32 @@ body {
     Samuel cresceu no templo sob os cuidados do sacerdote Eli. Desde jovem, ele demonstrou uma sensibilidade especial à voz de Deus. Em uma noite, Deus chamou Samuel enquanto ele estava dormindo, e ele, inicialmente, pensou que era Eli chamando-o. Após ser chamado várias vezes, Eli finalmente percebeu que era Deus quem o estava chamando e orientou Samuel a responder: “Fala, Senhor, porque o teu servo ouve.” A partir daquele momento, Samuel tornou-se um profeta de Deus, recebendo mensagens e direções divinas para guiar o povo de Israel.
   
     A história de Samuel destaca a importância da oração, da obediência e da disposição de ouvir a voz de Deus. A fé de Ana, sua perseverança na oração e sua disposição em obedecer a Deus nos mostram que Deus é fiel às suas promessas e que Ele ouve as súplicas de seus filhos.`,
-    imagem1: "public/imgs/samuel/ana.webp",
-    imagem2: "public/imgs/samuel/samuelouveDeus.webp",
-    reflection1: "A Oração e a Fé: Como a oração de Ana é um exemplo de fé e perseverança? O que podemos aprender sobre a importância da oração em nossas vidas?",
-    reflection2: "A Sensibilidade à Voz de Deus: Samuel aprendeu a ouvir a voz de Deus desde jovem. Como podemos cultivar a sensibilidade à voz de Deus em nossas vidas?",
-    reflection3: "Obediência e Dedicação: Ana dedicou Samuel ao Senhor em obediência. Como podemos dedicar nossas vidas e talentos a Deus e servi-lo com fé?",
-  },
-  {
-    id: 20,
-    title: "Saul: O Primeiro Rei de Israel",
-    text: `A história de Saul começa com a escolha de um líder para o povo de Israel. Depois de anos de opressão, os israelitas pediram um rei para governá-los, como as nações vizinhas. Embora Deus fosse seu rei, o povo desejava um líder humano. Ele era um homem alto e imponente, com grande estatura e presença, e tinha tudo para ser um rei exemplar.
+        imagem1: "public/imgs/samuel/ana.webp",
+        imagem2: "public/imgs/samuel/samuelouveDeus.webp",
+        reflection1: "A Oração e a Fé: Como a oração de Ana é um exemplo de fé e perseverança? O que podemos aprender sobre a importância da oração em nossas vidas?",
+        reflection2: "A Sensibilidade à Voz de Deus: Samuel aprendeu a ouvir a voz de Deus desde jovem. Como podemos cultivar a sensibilidade à voz de Deus em nossas vidas?",
+        reflection3: "Obediência e Dedicação: Ana dedicou Samuel ao Senhor em obediência. Como podemos dedicar nossas vidas e talentos a Deus e servi-lo com fé?",
+      },
+      {
+        id: 20,
+        title: "Saul: O Primeiro Rei de Israel",
+        text: `A história de Saul começa com a escolha de um líder para o povo de Israel. Depois de anos de opressão, os israelitas pediram um rei para governá-los, como as nações vizinhas. Embora Deus fosse seu rei, o povo desejava um líder humano. Ele era um homem alto e imponente, com grande estatura e presença, e tinha tudo para ser um rei exemplar.
   
     Deus, em resposta ao pedido do povo, escolheu Saul como o primeiro rei de Israel. Ele foi ungido pelo profeta Samuel, que o orientou sobre suas responsabilidades como líder do povo. No início de seu reinado, Saul obedeceu a Deus e foi vitorioso em batalhas contra os inimigos de Israel, como os amalequitas e os filisteus. Entretanto, à medida que o tempo passava, Saul começou a desviar-se dos caminhos de Deus. Sua falta de obediência e sua desconfiança em Deus levaram à sua queda.
   
     Em uma das batalhas, Saul desobedeceu às instruções de Deus, poupando o rei amalecita e os melhores animais. Samuel confrontou Saul sobre sua desobediência e disse que Deus havia escolhido outro homem para ser rei, referindo-se a Davi. Essa rejeição foi um golpe devastador para Saul, que se tornou atormentado e cheio de ciúmes de Davi, o novo ungido de Deus.
   
     A história de Saul nos ensina sobre a importância da obediência a Deus e os perigos do orgulho e da autoconfiança. Saul começou sua jornada como um rei humilde, mas a arrogância e a desobediência o levaram à ruína. Sua vida serve como um alerta sobre como a falta de compromisso com Deus pode resultar em consequências trágicas.`,
-    imagem1: "public/imgs/saul/saul.png",
-    imagem2: "public/imgs/saul/saulrei.png",
-    reflection1: "O Pedido de um Rei: O que o desejo do povo de Israel por um rei revela sobre a natureza humana e nossa relação com Deus?",
-    reflection2: "A Queda de Saul: Como a desobediência de Saul resultou em sua queda? O que podemos aprender sobre a importância de seguir a vontade de Deus em nossas vidas?",
-    reflection3: "A Importância da Humildade: Como a arrogância e o orgulho podem nos afastar de Deus? Como podemos cultivar a humildade em nossas vidas?",
-  },
-  {
-    id: 21,
-    title: "A Queda de Saul: Desobediência, Ciúmes e Tragédia",
-    text: `Saul foi escolhido por Deus e ungido como o primeiro rei de Israel. No início de seu reinado, ele mostrou força e liderança, mas com o passar do tempo, seus erros o afastaram de Deus, levando à sua queda. Um dos momentos decisivos foi quando Saul desobedeceu diretamente às ordens de Deus em uma batalha crucial.
+        imagem1: "public/imgs/saul/saul.png",
+        imagem2: "public/imgs/saul/saulrei.png",
+        reflection1: "O Pedido de um Rei: O que o desejo do povo de Israel por um rei revela sobre a natureza humana e nossa relação com Deus?",
+        reflection2: "A Queda de Saul: Como a desobediência de Saul resultou em sua queda? O que podemos aprender sobre a importância de seguir a vontade de Deus em nossas vidas?",
+        reflection3: "A Importância da Humildade: Como a arrogância e o orgulho podem nos afastar de Deus? Como podemos cultivar a humildade em nossas vidas?",
+      },
+      {
+        id: 21,
+        title: "A Queda de Saul: Desobediência, Ciúmes e Tragédia",
+        text: `Saul foi escolhido por Deus e ungido como o primeiro rei de Israel. No início de seu reinado, ele mostrou força e liderança, mas com o passar do tempo, seus erros o afastaram de Deus, levando à sua queda. Um dos momentos decisivos foi quando Saul desobedeceu diretamente às ordens de Deus em uma batalha crucial.
   
           Deus havia ordenado, através do profeta Samuel, que Saul destruísse completamente os amalequitas e tudo o que possuíam. No entanto, Saul poupou o rei Agague e o melhor dos rebanhos, desobedecendo ao mandamento divino. Quando confrontado por Samuel, Saul tentou justificar sua ação, dizendo que o gado seria sacrificado a Deus. Samuel respondeu: "Obedecer é melhor do que sacrificar" (1 Samuel 15:22). Foi então que Deus decidiu rejeitar Saul como rei de Israel, pois ele havia demonstrado que seu coração não estava alinhado com a vontade divina. O Espírito Santo de Deus foi retirado de Saul, e ele passou a ser atormentado por um espírito maligno.
   
@@ -698,17 +403,17 @@ body {
   
           A queda de Saul é uma história de desobediência, ciúmes e orgulho. Embora ele tenha começado com grande promessa como o primeiro rei de Israel, sua incapacidade de seguir a vontade de Deus e sua obsessão em manter o poder o levaram à ruína. Sua história é um alerta sobre os perigos de afastar-se de Deus e de permitir que o orgulho e a insegurança tomem conta do coração.`,
 
-    imagem1: "public/imgs/saulaqueda/ssaul.png",
-    imagem2: "public/imgs/saulaqueda/sauledavi.jpg",
+        imagem1: "public/imgs/saulaqueda/ssaul.png",
+        imagem2: "public/imgs/saulaqueda/sauledavi.jpg",
 
-    reflection1: "A Desobediência: A queda de Saul começou com sua desobediência a Deus. O que podemos aprender sobre a importância de seguir as instruções de Deus, mesmo quando não entendemos completamente seus planos?",
-    reflection2: "O Ciúme e o Orgulho: Saul se deixou consumir pelo ciúme de Davi. Como o orgulho e o ciúme podem destruir nossas relações e nos afastar de Deus? O que podemos fazer para manter um coração humilde?",
-    reflection3: "A Busca por Deus: Saul, em seu desespero, se afastou cada vez mais de Deus. Como podemos garantir que, mesmo em momentos difíceis, continuemos a buscar a orientação e o conforto de Deus?",
-  },
-  {
-    id: 22,
-    title: "Davi: O Rei Escolhido por Deus, Coragem e Fé",
-    text: `Davi foi escolhido por Deus para ser o segundo rei de Israel, conhecido por seu coração segundo a vontade divina. Ele começou sua jornada como um simples pastor de ovelhas, mas sua coragem, fé e lealdade a Deus o elevaram a grandes conquistas, começando com a derrota de Golias.
+        reflection1: "A Desobediência: A queda de Saul começou com sua desobediência a Deus. O que podemos aprender sobre a importância de seguir as instruções de Deus, mesmo quando não entendemos completamente seus planos?",
+        reflection2: "O Ciúme e o Orgulho: Saul se deixou consumir pelo ciúme de Davi. Como o orgulho e o ciúme podem destruir nossas relações e nos afastar de Deus? O que podemos fazer para manter um coração humilde?",
+        reflection3: "A Busca por Deus: Saul, em seu desespero, se afastou cada vez mais de Deus. Como podemos garantir que, mesmo em momentos difíceis, continuemos a buscar a orientação e o conforto de Deus?",
+      },
+      {
+        id: 22,
+        title: "Davi: O Rei Escolhido por Deus, Coragem e Fé",
+        text: `Davi foi escolhido por Deus para ser o segundo rei de Israel, conhecido por seu coração segundo a vontade divina. Ele começou sua jornada como um simples pastor de ovelhas, mas sua coragem, fé e lealdade a Deus o elevaram a grandes conquistas, começando com a derrota de Golias.
   
           Quando o profeta Samuel foi enviado por Deus à casa de Jessé, em Belém, para ungir o novo rei de Israel, ele encontrou Davi, o mais jovem dos filhos, cuidando das ovelhas. Apesar de sua juventude e aparência simples, Deus não se importou com a aparência externa, mas com o coração. Samuel ungiu Davi como o escolhido de Deus, marcando o início de sua jornada para o trono.
   
@@ -722,17 +427,17 @@ body {
   
           Mesmo após seus erros, Davi é lembrado por seu arrependimento genuíno e sua profunda relação com Deus. Ele estabeleceu o padrão para o reinado ideal em Israel, e suas vitórias e falhas servem como lições valiosas para a vida espiritual. Deus prometeu que a linhagem de Davi seria eterna, e Jesus, o Messias, veio da descendência de Davi, cumprindo essa promessa divina.`,
 
-    imagem1: "public/imgs/davi/rei davi.webp",
-    imagem2: "public/imgs/davi/kingdavid.png",
+        imagem1: "public/imgs/davi/rei davi.webp",
+        imagem2: "public/imgs/davi/kingdavid.png",
 
-    reflection1: "Coragem e Fé: Davi enfrentou o gigante Golias confiando totalmente em Deus. Como podemos desenvolver a coragem necessária para enfrentar os 'gigantes' em nossas vidas? O que podemos aprender da fé de Davi?",
-    reflection2: "Perdão e Arrependimento: Mesmo após cometer erros graves, Davi foi perdoado por Deus por causa de seu coração arrependido. Como podemos buscar o perdão de Deus e aprender a nos arrepender genuinamente de nossos erros?",
-    reflection3: "Liderança e Humildade: Davi mostrou respeito por Saul, mesmo quando perseguido. O que podemos aprender com Davi sobre liderança, humildade e respeito pela autoridade?"
-  },
-  {
-    id: 23,
-    title: "Davi e Golias: Fé e Coragem em Batalha",
-    text: `A história de Davi e Golias é uma das narrativas mais famosas da Bíblia, destacando a coragem, fé e confiança de um jovem pastor em Deus. Na época, os israelitas estavam em guerra com os filisteus, e um gigante guerreiro chamado Golias desafiava diariamente o exército de Israel, provocando-os para que enviassem alguém para lutar contra ele.
+        reflection1: "Coragem e Fé: Davi enfrentou o gigante Golias confiando totalmente em Deus. Como podemos desenvolver a coragem necessária para enfrentar os 'gigantes' em nossas vidas? O que podemos aprender da fé de Davi?",
+        reflection2: "Perdão e Arrependimento: Mesmo após cometer erros graves, Davi foi perdoado por Deus por causa de seu coração arrependido. Como podemos buscar o perdão de Deus e aprender a nos arrepender genuinamente de nossos erros?",
+        reflection3: "Liderança e Humildade: Davi mostrou respeito por Saul, mesmo quando perseguido. O que podemos aprender com Davi sobre liderança, humildade e respeito pela autoridade?"
+      },
+      {
+        id: 23,
+        title: "Davi e Golias: Fé e Coragem em Batalha",
+        text: `A história de Davi e Golias é uma das narrativas mais famosas da Bíblia, destacando a coragem, fé e confiança de um jovem pastor em Deus. Na época, os israelitas estavam em guerra com os filisteus, e um gigante guerreiro chamado Golias desafiava diariamente o exército de Israel, provocando-os para que enviassem alguém para lutar contra ele.
   
           Golias era um soldado experiente, com mais de 3 metros de altura, coberto por uma armadura pesada e armado com uma espada e lança enormes. Sua presença intimidava os israelitas, que temiam enfrentá-lo. Durante 40 dias, Golias se apresentou ao exército de Israel, zombando de seus soldados e de seu Deus.
   
@@ -746,17 +451,17 @@ body {
   
           A história de Davi e Golias é um exemplo poderoso de fé, mostrando que, com Deus, mesmo o impossível pode ser alcançado. Davi, um jovem pastor sem experiência militar, derrotou o maior guerreiro filisteu não por sua própria força, mas por sua confiança em Deus. Essa vitória marcou o início da ascensão de Davi como herói em Israel e, mais tarde, como o rei ungido por Deus.`,
 
-    imagem1: "public/imgs/daviegolias/daviegolias.webp",
-    imagem2: "public/imgs/daviegolias/davi.png",
+        imagem1: "public/imgs/daviegolias/daviegolias.webp",
+        imagem2: "public/imgs/daviegolias/davi.png",
 
-    reflection1: "Fé em Deus: Davi confiou completamente em Deus ao enfrentar Golias. O que podemos aprender sobre colocar nossa confiança em Deus em situações difíceis? Como a fé pode nos dar coragem?",
-    reflection2: "Coragem e Humildade: Embora fosse jovem e inexperiente, Davi teve a coragem de enfrentar Golias. Como podemos desenvolver coragem diante de desafios maiores do que nós? Como a humildade diante de Deus nos ajuda a enfrentar essas batalhas?",
-    reflection3: "Deus e as Impossibilidades: Davi derrotou o gigante porque acreditava que Deus estava com ele. O que essa história nos ensina sobre o poder de Deus para nos ajudar a superar o que parece impossível?"
-  },
-  {
-    id: 24,
-    title: "A Perseguição de Saul e a Amizade de Davi com Jônatas",
-    text: `A história da perseguição de Saul a Davi é uma narrativa emocionante de lealdade, amizade e desafios. Davi, um jovem pastor, foi ungido por Deus para ser o próximo rei de Israel após o afastamento de Saul. No entanto, Saul, dominado pelo ciúme e pelo medo de perder o trono, começou a perseguir Davi, tentando tirá-lo de seu caminho.
+        reflection1: "Fé em Deus: Davi confiou completamente em Deus ao enfrentar Golias. O que podemos aprender sobre colocar nossa confiança em Deus em situações difíceis? Como a fé pode nos dar coragem?",
+        reflection2: "Coragem e Humildade: Embora fosse jovem e inexperiente, Davi teve a coragem de enfrentar Golias. Como podemos desenvolver coragem diante de desafios maiores do que nós? Como a humildade diante de Deus nos ajuda a enfrentar essas batalhas?",
+        reflection3: "Deus e as Impossibilidades: Davi derrotou o gigante porque acreditava que Deus estava com ele. O que essa história nos ensina sobre o poder de Deus para nos ajudar a superar o que parece impossível?"
+      },
+      {
+        id: 24,
+        title: "A Perseguição de Saul e a Amizade de Davi com Jônatas",
+        text: `A história da perseguição de Saul a Davi é uma narrativa emocionante de lealdade, amizade e desafios. Davi, um jovem pastor, foi ungido por Deus para ser o próximo rei de Israel após o afastamento de Saul. No entanto, Saul, dominado pelo ciúme e pelo medo de perder o trono, começou a perseguir Davi, tentando tirá-lo de seu caminho.
   
           Enquanto Davi fugia, ele encontrou refúgio em cavernas e desertos, sempre à mercê da ira de Saul. Mas, durante esse período difícil, Davi formou uma profunda amizade com Jônatas, o filho de Saul. Jônatas, percebendo a injustiça da perseguição, tornou-se um defensor de Davi, ajudando-o a escapar das armadilhas de seu próprio pai.
   
@@ -768,17 +473,17 @@ body {
   
           A história culminou na tragédia da morte de Jônatas em batalha, um momento que devastou Davi. Ele lamentou profundamente a perda de seu amigo, escrevendo uma canção em sua homenagem, celebrando a amizade que transcendeu as adversidades. A perseguição de Saul não apenas moldou Davi como um líder, mas também destacou o poder da amizade verdadeira em meio à luta.`,
 
-    imagem1: "public/imgs/daviesaul/davie saul.png",
-    imagem2: "public/imgs/daviesaul/sauledavi.jpg",
+        imagem1: "public/imgs/daviesaul/davie saul.png",
+        imagem2: "public/imgs/daviesaul/sauledavi.jpg",
 
-    reflection1: "A Lealdade da Amizade: A amizade entre Davi e Jônatas nos ensina sobre a importância de apoiar uns aos outros em tempos difíceis. Como podemos ser amigos leais nas adversidades? O que isso significa para nós hoje?",
-    reflection2: "Coragem para Fazer o Certo: Davi teve a coragem de não retaliar contra Saul, mostrando que a verdadeira força está em agir com justiça. Como podemos encontrar a coragem de fazer o que é certo, mesmo quando é difícil?",
-    reflection3: "O Valor da Misericórdia: Davi poupou a vida de Saul, demonstrando misericórdia em meio à perseguição. O que essa história nos ensina sobre a importância de mostrar compaixão, mesmo àqueles que nos ferem?"
-  },
-  {
-    id: 25,
-    title: "A Ascensão e Queda de Davi: Glória e Tragédia",
-    text: `Davi, um jovem pastor, foi ungido por Deus como o futuro rei de Israel pelo profeta Samuel. Sua fama cresceu quando derrotou o gigante Golias, ganhando a admiração do povo e a inveja do rei Saul. Após a morte de Saul, Davi ascendeu ao trono com cerca de 30 anos, unificando todas as tribos de Israel.
+        reflection1: "A Lealdade da Amizade: A amizade entre Davi e Jônatas nos ensina sobre a importância de apoiar uns aos outros em tempos difíceis. Como podemos ser amigos leais nas adversidades? O que isso significa para nós hoje?",
+        reflection2: "Coragem para Fazer o Certo: Davi teve a coragem de não retaliar contra Saul, mostrando que a verdadeira força está em agir com justiça. Como podemos encontrar a coragem de fazer o que é certo, mesmo quando é difícil?",
+        reflection3: "O Valor da Misericórdia: Davi poupou a vida de Saul, demonstrando misericórdia em meio à perseguição. O que essa história nos ensina sobre a importância de mostrar compaixão, mesmo àqueles que nos ferem?"
+      },
+      {
+        id: 25,
+        title: "A Ascensão e Queda de Davi: Glória e Tragédia",
+        text: `Davi, um jovem pastor, foi ungido por Deus como o futuro rei de Israel pelo profeta Samuel. Sua fama cresceu quando derrotou o gigante Golias, ganhando a admiração do povo e a inveja do rei Saul. Após a morte de Saul, Davi ascendeu ao trono com cerca de 30 anos, unificando todas as tribos de Israel.
   
           A ascensão de Davi foi marcada por conquistas e prosperidade. Ele expandiu os territórios de Israel, trouxe a Arca da Aliança para Jerusalém e estabeleceu a cidade como a capital do reino. Davi era conhecido por seu coração fiel a Deus e suas composições poéticas. No entanto, em um período de paz, Davi cometeu um erro trágico que mudaria sua vida para sempre.
   
@@ -792,17 +497,17 @@ body {
   
           A história da ascensão e queda de Davi é uma poderosa lição sobre os perigos do orgulho e do pecado. Mesmo um homem segundo o coração de Deus pode errar gravemente. Sua trajetória é um testemunho da misericórdia e do perdão de Deus, mas também dos graves custos do pecado que podem afetar não apenas a vida de um indivíduo, mas de toda uma família e nação.`,
 
-    imagem1: "public/imgs/ascençãoequedadedavi/ascençãodavi.png",
-    imagem2: "public/imgs/ascençãoequedadedavi/absalao.png",
+        imagem1: "public/imgs/ascençãoequedadedavi/ascençãodavi.png",
+        imagem2: "public/imgs/ascençãoequedadedavi/absalao.png",
 
-    reflection1: "O Perigo do Orgulho: A ascensão de Davi nos ensina sobre os perigos do orgulho e do poder. Como podemos nos manter humildes em tempos de sucesso e glória? Quais lições podemos aprender com os erros de Davi?",
-    reflection2: "As Consequências do Pecado: O adultério de Davi trouxe consequências devastadoras para sua vida e sua família. O que essa história nos ensina sobre a gravidade das nossas ações e a importância do arrependimento?",
-    reflection3: "A Dureza da Perda: Davi sofreu a dor da perda de seu filho Absalão, mostrando que a tragédia pode seguir decisões erradas. Como podemos encontrar consolo e esperança mesmo nas situações mais difíceis da vida?"
-  },
-  {
-    id: 26,
-    title: "A Fragilidade dos Grandes: Erros dos Profetas e Reis da Bíblia",
-    text: `Na rica tapeçaria das narrativas bíblicas, encontramos muitos homens de Deus que, apesar de suas grandezas, enfrentaram suas próprias fraquezas e cometeram erros significativos. Essas histórias nos ensinam que, mesmo os mais nobres, não são imunes ao pecado.
+        reflection1: "O Perigo do Orgulho: A ascensão de Davi nos ensina sobre os perigos do orgulho e do poder. Como podemos nos manter humildes em tempos de sucesso e glória? Quais lições podemos aprender com os erros de Davi?",
+        reflection2: "As Consequências do Pecado: O adultério de Davi trouxe consequências devastadoras para sua vida e sua família. O que essa história nos ensina sobre a gravidade das nossas ações e a importância do arrependimento?",
+        reflection3: "A Dureza da Perda: Davi sofreu a dor da perda de seu filho Absalão, mostrando que a tragédia pode seguir decisões erradas. Como podemos encontrar consolo e esperança mesmo nas situações mais difíceis da vida?"
+      },
+      {
+        id: 26,
+        title: "A Fragilidade dos Grandes: Erros dos Profetas e Reis da Bíblia",
+        text: `Na rica tapeçaria das narrativas bíblicas, encontramos muitos homens de Deus que, apesar de suas grandezas, enfrentaram suas próprias fraquezas e cometeram erros significativos. Essas histórias nos ensinam que, mesmo os mais nobres, não são imunes ao pecado.
   
           Começamos com Adão, o primeiro homem criado por Deus, que, em sua desobediência, trouxe o pecado ao mundo ao comer do fruto proibido. Apesar de sua comunhão direta com Deus, ele falhou em resistir à tentação.
   
@@ -822,17 +527,17 @@ body {
   
           As histórias dos grandes profetas e reis da Bíblia nos lembram que, apesar de suas falhas, Deus ainda os usou para cumprir Seus propósitos. Isso nos ensina sobre a graça, a redenção e a possibilidade de recomeço, mostrando que não importa quão grandes sejam nossas falhas, Deus pode transformar nossas vidas para Sua glória.`,
 
-    imagem1: "public/imgs/historiafragilidadeshumanas/homem.webp",
-    imagem2: "public/imgs/historiafragilidadeshumanas/saullança.jpg",
+        imagem1: "public/imgs/historiafragilidadeshumanas/homem.webp",
+        imagem2: "public/imgs/historiafragilidadeshumanas/saullança.jpg",
 
-    reflection1: "A Imperfeição Humana: As histórias de Adão, Abraão e Davi nos mostram que todos nós falhamos. Como podemos aprender a reconhecer nossas fraquezas e buscar a Deus em arrependimento?",
-    reflection2: "A Graça de Deus: Mesmo após seus erros, os grandes homens de Deus foram restaurados. O que isso nos ensina sobre a natureza da graça e a possibilidade de redenção em nossas próprias vidas?",
-    reflection3: "Jesus, a Exceção: Enquanto todos os outros falharam, Jesus permaneceu perfeito. Como podemos nos inspirar em Sua vida para buscar uma maior conformidade com Sua imagem em nossas próprias jornadas espirituais?"
-  },
-  {
-    id: 27,
-    title: "A Redenção de Davi e Seus Últimos Dias: O Perdão de Deus e a Morte do Rei Amado",
-    text: `Após seu grave pecado com Bate-Seba e a morte de Urias, Davi enfrentou as consequências de suas ações. O profeta Natã foi enviado por Deus para confrontá-lo, e ao ouvir a parábola que revelava sua culpa, Davi se arrependeu profundamente. Ele confessou seu pecado diante de Deus com o coração quebrantado, escrevendo o Salmo 51 como expressão desse arrependimento. Davi clamou pela misericórdia divina, e Deus o perdoou, mas as consequências de seus atos ainda se manifestaram em sua família e reino.
+        reflection1: "A Imperfeição Humana: As histórias de Adão, Abraão e Davi nos mostram que todos nós falhamos. Como podemos aprender a reconhecer nossas fraquezas e buscar a Deus em arrependimento?",
+        reflection2: "A Graça de Deus: Mesmo após seus erros, os grandes homens de Deus foram restaurados. O que isso nos ensina sobre a natureza da graça e a possibilidade de redenção em nossas próprias vidas?",
+        reflection3: "Jesus, a Exceção: Enquanto todos os outros falharam, Jesus permaneceu perfeito. Como podemos nos inspirar em Sua vida para buscar uma maior conformidade com Sua imagem em nossas próprias jornadas espirituais?"
+      },
+      {
+        id: 27,
+        title: "A Redenção de Davi e Seus Últimos Dias: O Perdão de Deus e a Morte do Rei Amado",
+        text: `Após seu grave pecado com Bate-Seba e a morte de Urias, Davi enfrentou as consequências de suas ações. O profeta Natã foi enviado por Deus para confrontá-lo, e ao ouvir a parábola que revelava sua culpa, Davi se arrependeu profundamente. Ele confessou seu pecado diante de Deus com o coração quebrantado, escrevendo o Salmo 51 como expressão desse arrependimento. Davi clamou pela misericórdia divina, e Deus o perdoou, mas as consequências de seus atos ainda se manifestaram em sua família e reino.
 
           A vida de Davi foi marcada por lutas e tragédias, mas também por momentos de profunda adoração e fé. Ele foi um homem segundo o coração de Deus não porque era perfeito, mas porque, mesmo em meio aos seus erros, sempre retornava a Deus em arrependimento sincero. O Senhor o restaurou, e Davi continuou a reinar sobre Israel com sabedoria e justiça, preparando seu filho Salomão para assumir o trono.
 
@@ -840,17 +545,17 @@ body {
 
           Ao morrer, Davi foi lembrado como um grande rei de Israel, um guerreiro valente, um poeta sensível e um homem que, apesar de suas falhas, era profundamente amado por Deus. O perdão que Davi recebeu foi uma poderosa demonstração da graça de Deus. Sua morte marcou o fim de uma era, mas seu legado e sua linhagem continuaram a impactar a história de Israel, culminando na vinda do Messias, Jesus Cristo, que veio da casa de Davi, conforme as promessas de Deus.`,
 
-    imagem1: "public/imgs/redencaodavi/davifinal.webp",
-    imagem2: "public/imgs/redencaodavi/davi morte.webp",
+        imagem1: "public/imgs/redencaodavi/davifinal.webp",
+        imagem2: "public/imgs/redencaodavi/davi morte.webp",
 
-    reflection1: "O Poder do Arrependimento: Davi foi perdoado por Deus após seu pecado com Bate-Seba. Como podemos aprender com seu exemplo a confessar nossas falhas e buscar o perdão divino com sinceridade?",
-    reflection2: "O Legado de Davi: Apesar de seus erros, Davi foi lembrado como o maior rei de Israel. Como nossas ações e nosso arrependimento podem impactar as gerações futuras?",
-    reflection3: "Cristo, o Descendente de Davi: A linhagem de Davi culminou em Jesus, o Salvador. Como essa promessa cumprida nos mostra o plano redentor de Deus ao longo da história?"
-  },
-  {
-    id: 28,
-    title: "Salomão: O Rei Sábio e Suas Riquezas",
-    text: `Salomão, filho do grande rei Davi e de Bate-Seba, foi escolhido para suceder seu pai no trono de Israel. Logo no início de seu reinado, Salomão demonstrou humildade e temor a Deus. Quando o Senhor apareceu a ele em um sonho e ofereceu-lhe qualquer coisa que desejasse, Salomão não pediu riquezas, poder ou a morte de seus inimigos. Em vez disso, ele pediu sabedoria para governar o povo de Deus com justiça.
+        reflection1: "O Poder do Arrependimento: Davi foi perdoado por Deus após seu pecado com Bate-Seba. Como podemos aprender com seu exemplo a confessar nossas falhas e buscar o perdão divino com sinceridade?",
+        reflection2: "O Legado de Davi: Apesar de seus erros, Davi foi lembrado como o maior rei de Israel. Como nossas ações e nosso arrependimento podem impactar as gerações futuras?",
+        reflection3: "Cristo, o Descendente de Davi: A linhagem de Davi culminou em Jesus, o Salvador. Como essa promessa cumprida nos mostra o plano redentor de Deus ao longo da história?"
+      },
+      {
+        id: 28,
+        title: "Salomão: O Rei Sábio e Suas Riquezas",
+        text: `Salomão, filho do grande rei Davi e de Bate-Seba, foi escolhido para suceder seu pai no trono de Israel. Logo no início de seu reinado, Salomão demonstrou humildade e temor a Deus. Quando o Senhor apareceu a ele em um sonho e ofereceu-lhe qualquer coisa que desejasse, Salomão não pediu riquezas, poder ou a morte de seus inimigos. Em vez disso, ele pediu sabedoria para governar o povo de Deus com justiça.
 
           A resposta de Salomão agradou a Deus, que não apenas lhe concedeu sabedoria incomparável, mas também riquezas e honras que nenhum outro rei havia experimentado. A sabedoria de Salomão se tornou lendária. Ele resolveu disputas difíceis com discernimento, como no famoso caso de duas mulheres que afirmavam ser mãe do mesmo bebê. Salomão, em sua sagacidade, sugeriu que o bebê fosse dividido ao meio, revelando imediatamente a verdadeira mãe pelo seu amor e sacrifício.
 
@@ -862,17 +567,17 @@ body {
 
           Mesmo assim, a vida de Salomão é lembrada por sua sabedoria incomparável e por sua riqueza extraordinária. Seu reinado trouxe um período de paz e prosperidade a Israel, e suas obras e ensinamentos continuam a influenciar a cultura e a religião até os dias de hoje.`,
 
-    imagem1: "public/imgs/salomao/salomao.png",
-    imagem2: "public/imgs/salomao/castelosalomao.webp",
+        imagem1: "public/imgs/salomao/salomao.png",
+        imagem2: "public/imgs/salomao/castelosalomao.webp",
 
-    reflection1: "A Sabedoria Divina: Salomão pediu sabedoria em vez de riquezas. Como podemos buscar a sabedoria de Deus em nossas vidas diárias para tomar decisões justas e corretas?",
-    reflection2: "Riqueza e Responsabilidade: Salomão foi abençoado com grande riqueza, mas também cometeu erros. Como devemos lidar com as bênçãos materiais, mantendo nossa fidelidade a Deus?",
-    reflection3: "Legado de Sabedoria: A fama de Salomão e sua sabedoria ainda ecoam hoje. Como podemos deixar um legado que inspire futuras gerações a buscarem a justiça e a verdade?"
-  },
-  {
-    id: 29,
-    title: "A Sabedoria de Salomão: A Decisão do Bebê e a Visita da Rainha de Sabá",
-    text: `O reinado de Salomão foi marcado por muitos feitos de sabedoria e justiça. Seu nome se tornou sinônimo de discernimento divino, e suas decisões impactaram não apenas o povo de Israel, mas também nações vizinhas. Dois dos eventos mais famosos que evidenciam sua sabedoria foram o julgamento de duas mulheres que disputavam um bebê e a visita da rainha de Sabá, que veio de longe para conhecer a profundidade de sua sabedoria.
+        reflection1: "A Sabedoria Divina: Salomão pediu sabedoria em vez de riquezas. Como podemos buscar a sabedoria de Deus em nossas vidas diárias para tomar decisões justas e corretas?",
+        reflection2: "Riqueza e Responsabilidade: Salomão foi abençoado com grande riqueza, mas também cometeu erros. Como devemos lidar com as bênçãos materiais, mantendo nossa fidelidade a Deus?",
+        reflection3: "Legado de Sabedoria: A fama de Salomão e sua sabedoria ainda ecoam hoje. Como podemos deixar um legado que inspire futuras gerações a buscarem a justiça e a verdade?"
+      },
+      {
+        id: 29,
+        title: "A Sabedoria de Salomão: A Decisão do Bebê e a Visita da Rainha de Sabá",
+        text: `O reinado de Salomão foi marcado por muitos feitos de sabedoria e justiça. Seu nome se tornou sinônimo de discernimento divino, e suas decisões impactaram não apenas o povo de Israel, mas também nações vizinhas. Dois dos eventos mais famosos que evidenciam sua sabedoria foram o julgamento de duas mulheres que disputavam um bebê e a visita da rainha de Sabá, que veio de longe para conhecer a profundidade de sua sabedoria.
 
         Em um dos episódios mais conhecidos de sua justiça, Salomão foi confrontado com uma situação delicada e complexa: duas mulheres, ambas prostitutas, moravam juntas e deram à luz filhos. No entanto, um dos bebês morreu durante a noite, e uma das mulheres alegou que a outra havia trocado o bebê morto pelo vivo. Ambas afirmavam ser a mãe do bebê vivo, e não havia testemunhas ou provas que pudessem esclarecer a verdade. Diante de tal dilema, Salomão, com calma e discernimento, ordenou que uma espada fosse trazida e que o bebê fosse cortado ao meio, dando uma metade para cada mulher.
 
@@ -884,139 +589,219 @@ body {
 
         Esses atos de Salomão não apenas revelaram sua inteligência e discernimento, mas também consolidaram sua reputação como o mais sábio de todos os reis, cuja fama se espalhou por muitas terras. Ele usou sua sabedoria para guiar Israel em um tempo de paz e prosperidade, e até hoje suas histórias são contadas como exemplos de justiça e sabedoria divinas.`,
 
-    imagem1: "public/imgs/salomaosabedoria/salomaosabedoria.webp",
-    imagem2: "public/imgs/salomaosabedoria/rainhadesaba.png",
+        imagem1: "public/imgs/salomaosabedoria/salomaosabedoria.webp",
+        imagem2: "public/imgs/salomaosabedoria/rainhadesaba.png",
 
-    reflection1: "A Verdadeira Sabedoria: A decisão de Salomão no caso do bebê mostra sua habilidade de discernir o coração humano. Como podemos buscar esse tipo de sabedoria em nossas próprias decisões diárias?",
-    reflection2: "Humildade e Reconhecimento: A rainha de Sabá reconheceu que a sabedoria de Salomão vinha de Deus. Como podemos reconhecer as bênçãos divinas em nossas vidas e utilizá-las para abençoar os outros?",
-    reflection3: "Paz e Prosperidade: O reinado de Salomão foi marcado por paz e prosperidade, muito em função de sua sabedoria. Como a sabedoria pode ajudar a construir ambientes de paz e harmonia em nossas comunidades?"
-  },
-  {
-    id: 30,
-    title: "Os Erros de Salomão: A Queda de um Rei Sábio",
-    text: "Salomão, filho de Davi, é conhecido por sua extraordinária sabedoria, mas sua vida também foi marcada por erros que levaram à sua queda. Após receber de Deus a oferta de qualquer coisa que desejasse, Salomão pediu sabedoria para governar seu povo, e Deus lhe concedeu não apenas sabedoria, mas também riqueza e honra. No entanto, sua sabedoria não o impediu de cometer graves erros que afetaram o futuro de Israel. Um dos maiores erros de Salomão foi a sua poligamia. Ele teve 700 esposas e 300 concubinas, muitas das quais eram estrangeiras. Isso levou à idolatria, pois Salomão permitiu que suas mulheres trouxessem seus deuses e práticas para Israel. Influenciado por elas, ele começou a adorar ídolos, desobedecendo assim ao mandamento de Deus, que proibia a adoração a outros deuses. Ao se afastar de Deus, Salomão não apenas comprometeu sua própria fé, mas também a de seu povo, resultando na corrupção e na idolatria. Deus, irado com Salomão, anunciou que o reino seria dividido após sua morte, e adversários surgiriam para desafiá-lo. Quando Salomão morreu, seu filho Roboão assumiu o trono, mas o reino foi dividido entre Judá e Israel, trazendo instabilidade e conflitos. A história de Salomão é um lembrete de que a sabedoria não é suficiente sem a obediência a Deus e a fidelidade aos Seus caminhos.",
+        reflection1: "A Verdadeira Sabedoria: A decisão de Salomão no caso do bebê mostra sua habilidade de discernir o coração humano. Como podemos buscar esse tipo de sabedoria em nossas próprias decisões diárias?",
+        reflection2: "Humildade e Reconhecimento: A rainha de Sabá reconheceu que a sabedoria de Salomão vinha de Deus. Como podemos reconhecer as bênçãos divinas em nossas vidas e utilizá-las para abençoar os outros?",
+        reflection3: "Paz e Prosperidade: O reinado de Salomão foi marcado por paz e prosperidade, muito em função de sua sabedoria. Como a sabedoria pode ajudar a construir ambientes de paz e harmonia em nossas comunidades?"
+      },
+      {
+        id: 30,
+        title: "Os Erros de Salomão: A Queda de um Rei Sábio",
+        text: "Salomão, filho de Davi, é conhecido por sua extraordinária sabedoria, mas sua vida também foi marcada por erros que levaram à sua queda. Após receber de Deus a oferta de qualquer coisa que desejasse, Salomão pediu sabedoria para governar seu povo, e Deus lhe concedeu não apenas sabedoria, mas também riqueza e honra. No entanto, sua sabedoria não o impediu de cometer graves erros que afetaram o futuro de Israel. Um dos maiores erros de Salomão foi a sua poligamia. Ele teve 700 esposas e 300 concubinas, muitas das quais eram estrangeiras. Isso levou à idolatria, pois Salomão permitiu que suas mulheres trouxessem seus deuses e práticas para Israel. Influenciado por elas, ele começou a adorar ídolos, desobedecendo assim ao mandamento de Deus, que proibia a adoração a outros deuses. Ao se afastar de Deus, Salomão não apenas comprometeu sua própria fé, mas também a de seu povo, resultando na corrupção e na idolatria. Deus, irado com Salomão, anunciou que o reino seria dividido após sua morte, e adversários surgiriam para desafiá-lo. Quando Salomão morreu, seu filho Roboão assumiu o trono, mas o reino foi dividido entre Judá e Israel, trazendo instabilidade e conflitos. A história de Salomão é um lembrete de que a sabedoria não é suficiente sem a obediência a Deus e a fidelidade aos Seus caminhos.",
 
-    imagem1: "public/imgs/salomaoqueda/salomaofalhas.png",
-    imagem2: "public/imgs/salomaoqueda/temploegipcio.png",
+        imagem1: "public/imgs/salomaoqueda/salomaofalhas.png",
+        imagem2: "public/imgs/salomaoqueda/temploegipcio.png",
 
-    reflection1: "A Sabedoria e o Cuidado: A história de Salomão nos ensina que a sabedoria deve ser acompanhada de responsabilidade. Como podemos garantir que nossas decisões sejam guiadas não apenas pela inteligência, mas também pela integridade moral?",
-    reflection2: "Os Perigos da Idolatras: A idolatria de Salomão demonstra como é fácil se desviar do caminho certo. Quais são as 'ídolos' modernos que podem nos afastar de nossa fé e compromisso com Deus?",
-    reflection3: "A Necessidade de Obediência: A queda de Salomão nos lembra da importância de permanecer fiel a Deus. Como podemos cultivar uma vida que priorize a obediência a Deus em um mundo cheio de distrações?"
-  },
-  {
-    id: 31,
-    title: "Eli: A Tragédia de um Sacerdote Fiel, Mas Falho",
-    text: "Eli, sumo sacerdote de Israel, era um homem devoto e dedicado ao serviço de Deus. Sua vida, no entanto, foi marcada por uma série de erros que tiveram consequências devastadoras para sua família e para toda a nação. Eli era conhecido por sua bondade e caráter piedoso, mas falhou em disciplinar seus filhos, Hofni e Fineias, que se entregaram à imoralidade e à ganância, desrespeitando o templo e os preceitos divinos.  Apesar de ter sido alertado por um homem de Deus sobre as ações de seus filhos e as consequências que elas trariam, Eli hesitou em repreendê-los, deixando que a complacência e o amor paternal o cegassem para a gravidade da situação.A desobediência de Hofni e Fineias levou à ira de Deus, que enviou uma praga sobre Israel, causando grande sofrimento e perda de vidas.  A derrota humilhante em batalha para os filisteus e a perda da arca da aliança, um símbolo da presença de Deus, selaram o destino de Hofni e Fineias, que foram mortos em combate.  A notícia da morte de seus filhos abalou Eli profundamente, e ele morreu de desgosto pouco depois, acometendo-o a dor e a culpa por sua falha em guiá-los pelo caminho da justiça. A história de Eli serve como um alerta para a importância da disciplina e da responsabilidade, mostrando que a devoção a Deus não isenta ninguém das consequências de seus erros e das responsabilidades que se deve ter em relação a seus filhos.",
+        reflection1: "A Sabedoria e o Cuidado: A história de Salomão nos ensina que a sabedoria deve ser acompanhada de responsabilidade. Como podemos garantir que nossas decisões sejam guiadas não apenas pela inteligência, mas também pela integridade moral?",
+        reflection2: "Os Perigos da Idolatras: A idolatria de Salomão demonstra como é fácil se desviar do caminho certo. Quais são as 'ídolos' modernos que podem nos afastar de nossa fé e compromisso com Deus?",
+        reflection3: "A Necessidade de Obediência: A queda de Salomão nos lembra da importância de permanecer fiel a Deus. Como podemos cultivar uma vida que priorize a obediência a Deus em um mundo cheio de distrações?"
+      },
+      {
+        id: 31,
+        title: "Eli: A Tragédia de um Sacerdote Fiel, Mas Falho",
+        text: "Eli, sumo sacerdote de Israel, era um homem devoto e dedicado ao serviço de Deus. Sua vida, no entanto, foi marcada por uma série de erros que tiveram consequências devastadoras para sua família e para toda a nação. Eli era conhecido por sua bondade e caráter piedoso, mas falhou em disciplinar seus filhos, Hofni e Fineias, que se entregaram à imoralidade e à ganância, desrespeitando o templo e os preceitos divinos.  Apesar de ter sido alertado por um homem de Deus sobre as ações de seus filhos e as consequências que elas trariam, Eli hesitou em repreendê-los, deixando que a complacência e o amor paternal o cegassem para a gravidade da situação.A desobediência de Hofni e Fineias levou à ira de Deus, que enviou uma praga sobre Israel, causando grande sofrimento e perda de vidas.  A derrota humilhante em batalha para os filisteus e a perda da arca da aliança, um símbolo da presença de Deus, selaram o destino de Hofni e Fineias, que foram mortos em combate.  A notícia da morte de seus filhos abalou Eli profundamente, e ele morreu de desgosto pouco depois, acometendo-o a dor e a culpa por sua falha em guiá-los pelo caminho da justiça. A história de Eli serve como um alerta para a importância da disciplina e da responsabilidade, mostrando que a devoção a Deus não isenta ninguém das consequências de seus erros e das responsabilidades que se deve ter em relação a seus filhos.",
 
-    imagem1: "public/imgs/eli/ofni e fineias.webp",
-    imagem2: "public/imgs/eli/ganancia.webp",
+        imagem1: "public/imgs/eli/ofni e fineias.webp",
+        imagem2: "public/imgs/eli/ganancia.webp",
 
-    reflection1: "A Importância da Disciplina:  A história de Eli nos mostra como a falta de disciplina pode ter consequências devastadoras. Como podemos encontrar o equilíbrio entre amor e correção na educação de nossos filhos?",
-    reflection2: "A Responsabilidade pelos Próximos: A história de Eli nos lembra da responsabilidade que temos por aqueles que estão sob nossos cuidados. Como podemos ser melhores líderes e guias para os outros, especialmente para nossos filhos, sem deixar que o amor nos cegue para suas falhas?",
-    reflection3: "O Poder da Obediência:  A história de Eli nos ensina que a obediência a Deus é essencial para evitar consequências negativas. Como podemos fortalecer nossa fé e compromisso com os mandamentos de Deus, mesmo diante das dificuldades?"
-  },
-  {
-    id: 32,
-    title: "Elias: O Profeta de Fogo e Fé Inabalável",
-    text: "Elias, um dos profetas mais importantes da história de Israel, viveu em uma época de profunda apostasia.  O rei Acabe e sua esposa Jezabel, uma fervorosa adoradora de Baal, haviam espalhado a idolatria por todo o reino, levando o povo a abandonar o Deus único e verdadeiro. Elias, movido por uma fé inabalável e uma profunda paixão pelo Senhor, se levantou contra a corrupção e a idolatria, desafiando o poder do rei e da rainha.Confrontando os profetas de Baal no Monte Carmelo, Elias desafiou-os a um duelo de poder.  Ele invocou o Deus de Israel, que respondeu com fogo do céu, consumindo o altar e demonstrando sua soberania sobre os deuses falsos.  A vitória esmagadora de Elias sobre os profetas de Baal marcou um ponto de virada na história, restaurando a fé no verdadeiro Deus e expondo a falsidade da idolatria.Apesar de sua fé inabalável e suas grandes realizações, Elias enfrentou momentos de profunda solidão e desespero.  Após confrontar a rainha Jezabel, que ameaçou matá-lo, Elias fugiu para o deserto, onde clamou ao Senhor, pedindo-lhe para tirá-lo da vida.  Em meio à sua profunda angústia, Deus o confortou, demonstrando seu cuidado e proteção, e o encorajou a continuar sua missão.  A história de Elias é uma poderosa história de fé, coragem e perseverança, mostrando que mesmo diante das maiores dificuldades, Deus nunca nos abandona e nos dá a força para enfrentar os desafios que a vida apresenta.",
+        reflection1: "A Importância da Disciplina:  A história de Eli nos mostra como a falta de disciplina pode ter consequências devastadoras. Como podemos encontrar o equilíbrio entre amor e correção na educação de nossos filhos?",
+        reflection2: "A Responsabilidade pelos Próximos: A história de Eli nos lembra da responsabilidade que temos por aqueles que estão sob nossos cuidados. Como podemos ser melhores líderes e guias para os outros, especialmente para nossos filhos, sem deixar que o amor nos cegue para suas falhas?",
+        reflection3: "O Poder da Obediência:  A história de Eli nos ensina que a obediência a Deus é essencial para evitar consequências negativas. Como podemos fortalecer nossa fé e compromisso com os mandamentos de Deus, mesmo diante das dificuldades?"
+      },
+      {
+        id: 32,
+        title: "Elias: O Profeta de Fogo e Fé Inabalável",
+        text: "Elias, um dos profetas mais importantes da história de Israel, viveu em uma época de profunda apostasia.  O rei Acabe e sua esposa Jezabel, uma fervorosa adoradora de Baal, haviam espalhado a idolatria por todo o reino, levando o povo a abandonar o Deus único e verdadeiro. Elias, movido por uma fé inabalável e uma profunda paixão pelo Senhor, se levantou contra a corrupção e a idolatria, desafiando o poder do rei e da rainha.Confrontando os profetas de Baal no Monte Carmelo, Elias desafiou-os a um duelo de poder.  Ele invocou o Deus de Israel, que respondeu com fogo do céu, consumindo o altar e demonstrando sua soberania sobre os deuses falsos.  A vitória esmagadora de Elias sobre os profetas de Baal marcou um ponto de virada na história, restaurando a fé no verdadeiro Deus e expondo a falsidade da idolatria.Apesar de sua fé inabalável e suas grandes realizações, Elias enfrentou momentos de profunda solidão e desespero.  Após confrontar a rainha Jezabel, que ameaçou matá-lo, Elias fugiu para o deserto, onde clamou ao Senhor, pedindo-lhe para tirá-lo da vida.  Em meio à sua profunda angústia, Deus o confortou, demonstrando seu cuidado e proteção, e o encorajou a continuar sua missão.  A história de Elias é uma poderosa história de fé, coragem e perseverança, mostrando que mesmo diante das maiores dificuldades, Deus nunca nos abandona e nos dá a força para enfrentar os desafios que a vida apresenta.",
 
-    imagem1: "public/imgs/elias/elias.png",
-    imagem2: "public/imgs/elias/eliasdeserto (2).png",
+        imagem1: "public/imgs/elias/elias.png",
+        imagem2: "public/imgs/elias/eliasdeserto (2).png",
 
-    reflection1: "A Fé Inabalável: Elias nos mostra como a fé inabalável pode nos dar força para enfrentar qualquer desafio. Como podemos fortalecer nossa fé e nos manter firmes em nossos princípios, mesmo quando enfrentamos oposição e dificuldades?",
-    reflection2: "A Coragem de Defender a Verdade: A história de Elias nos inspira a ter coragem de defender a verdade e lutar contra a injustiça. Como podemos encontrar a força para defender nossos valores e lutar por aquilo que acreditamos, mesmo quando estamos em minoria?",
-    reflection3: "A Importância da Oração: Elias nos ensina o poder da oração, mostrando que mesmo em momentos de profunda angústia, Deus está pronto para nos ouvir e nos fortalecer. Como podemos cultivar um relacionamento mais profundo com Deus através da oração e buscar sua orientação e consolo em nossas vidas?"
-  },
-  {
-    id: 33,
-    title: "Elias e Eliseu: A Jornada de Um Profeta e Seu Legado",
-    text: "Elias, o profeta de fogo, cumpriu uma longa jornada de fé e milagres em meio a uma nação em crise espiritual. Depois de suas vitórias e desafios, incluindo o confronto com os profetas de Baal e seu período de fuga, Elias recebeu instruções de Deus para preparar um sucessor: Eliseu. Elias encontrou Eliseu trabalhando em sua terra e, num ato simbólico, lançou seu manto sobre ele, sinalizando o chamado profético de Eliseu. Eliseu aceitou prontamente, demonstrando sua disposição de deixar tudo para seguir Elias e servir a Deus.\n\nO tempo de Elias na Terra estava prestes a se encerrar, e ele sabia que Deus o chamaria em breve. No caminho para o Jordão, Elias e Eliseu viajaram juntos, e Elias realizou seu último milagre: abriu o rio Jordão com seu manto, permitindo que os dois atravessassem a seco. Eliseu, sabendo que Elias partiria, pediu uma porção dobrada do espírito de Elias, desejando continuar seu trabalho com o mesmo poder e fé.\n\nEnquanto conversavam, uma carruagem de fogo, enviada por Deus, desceu do céu e separou os dois. Elias foi levado aos céus em um redemoinho, e Eliseu, com o coração cheio de determinação e lágrimas nos olhos, pegou o manto que Elias deixou cair. Com esse manto, Eliseu realizou seu primeiro milagre, novamente abrindo o rio Jordão, simbolizando que o legado de Elias agora era seu. Eliseu continuou o trabalho de seu mestre, levando adiante a missão de Deus e inspirando o povo com sua fé, milagres e ensinamentos. A história de Elias e Eliseu é uma poderosa lembrança da importância de transmitir o conhecimento e a fé, garantindo que o trabalho de Deus continue através das gerações.",
+        reflection1: "A Fé Inabalável: Elias nos mostra como a fé inabalável pode nos dar força para enfrentar qualquer desafio. Como podemos fortalecer nossa fé e nos manter firmes em nossos princípios, mesmo quando enfrentamos oposição e dificuldades?",
+        reflection2: "A Coragem de Defender a Verdade: A história de Elias nos inspira a ter coragem de defender a verdade e lutar contra a injustiça. Como podemos encontrar a força para defender nossos valores e lutar por aquilo que acreditamos, mesmo quando estamos em minoria?",
+        reflection3: "A Importância da Oração: Elias nos ensina o poder da oração, mostrando que mesmo em momentos de profunda angústia, Deus está pronto para nos ouvir e nos fortalecer. Como podemos cultivar um relacionamento mais profundo com Deus através da oração e buscar sua orientação e consolo em nossas vidas?"
+      },
+      {
+        id: 33,
+        title: "Elias e Eliseu: A Jornada de Um Profeta e Seu Legado",
+        text: "Elias, o profeta de fogo, cumpriu uma longa jornada de fé e milagres em meio a uma nação em crise espiritual. Depois de suas vitórias e desafios, incluindo o confronto com os profetas de Baal e seu período de fuga, Elias recebeu instruções de Deus para preparar um sucessor: Eliseu. Elias encontrou Eliseu trabalhando em sua terra e, num ato simbólico, lançou seu manto sobre ele, sinalizando o chamado profético de Eliseu. Eliseu aceitou prontamente, demonstrando sua disposição de deixar tudo para seguir Elias e servir a Deus.\n\nO tempo de Elias na Terra estava prestes a se encerrar, e ele sabia que Deus o chamaria em breve. No caminho para o Jordão, Elias e Eliseu viajaram juntos, e Elias realizou seu último milagre: abriu o rio Jordão com seu manto, permitindo que os dois atravessassem a seco. Eliseu, sabendo que Elias partiria, pediu uma porção dobrada do espírito de Elias, desejando continuar seu trabalho com o mesmo poder e fé.\n\nEnquanto conversavam, uma carruagem de fogo, enviada por Deus, desceu do céu e separou os dois. Elias foi levado aos céus em um redemoinho, e Eliseu, com o coração cheio de determinação e lágrimas nos olhos, pegou o manto que Elias deixou cair. Com esse manto, Eliseu realizou seu primeiro milagre, novamente abrindo o rio Jordão, simbolizando que o legado de Elias agora era seu. Eliseu continuou o trabalho de seu mestre, levando adiante a missão de Deus e inspirando o povo com sua fé, milagres e ensinamentos. A história de Elias e Eliseu é uma poderosa lembrança da importância de transmitir o conhecimento e a fé, garantindo que o trabalho de Deus continue através das gerações.",
 
-    imagem1: "public/imgs/eliaseeliseu/eliaseeliseu.webp",
-    imagem2: "public/imgs/eliaseeliseu/eliassendolevado.webp",
+        imagem1: "public/imgs/eliaseeliseu/eliaseeliseu.webp",
+        imagem2: "public/imgs/eliaseeliseu/eliassendolevado.webp",
 
-    reflection1: "O Valor do Legado: A transição entre Elias e Eliseu nos ensina sobre a importância de passarmos adiante o conhecimento e a fé. Como podemos inspirar e preparar as próximas gerações para continuar o que começamos?",
-    reflection2: "A Coragem de Assumir o Chamado: Eliseu aceitou prontamente o chamado de Deus, deixando para trás sua vida antiga. Como podemos responder com prontidão e coragem ao que Deus nos chama a fazer?",
-    reflection3: "O Espírito de Fé: Elias e Eliseu demonstraram uma fé poderosa e inabalável. Como podemos buscar uma fé profunda que nos permita enfrentar desafios e realizar grandes obras em nome de Deus?"
-  },
-  {
-    id: 34,
-    title: "Eliseu: O Profeta dos Milagres e da Esperança",
-    text: "Eliseu, sucessor do profeta Elias, iniciou sua jornada com uma missão corajosa e um espírito de fé inabalável. Depois de presenciar o arrebatamento de Elias em uma carruagem de fogo, Eliseu pegou o manto de seu mestre e realizou seu primeiro milagre: atravessou o rio Jordão a seco. Esse ato marcou o início de um ministério poderoso, onde ele não só guiaria Israel espiritualmente, mas também traria alívio e esperança ao povo por meio de milagres extraordinários.\n\nUm dos primeiros milagres de Eliseu foi purificar as águas da cidade de Jericó, que estavam envenenadas e causavam doenças. Com apenas um punhado de sal e uma oração, ele tornou as águas saudáveis, abençoando a cidade e devolvendo a vida às suas terras. Eliseu também multiplicou o óleo de uma viúva empobrecida, que estava prestes a perder seus filhos como pagamento de dívidas. Com esse milagre, o pouco óleo que restava encheu diversas vasilhas, garantindo o sustento da viúva e sua família.\n\nEm uma outra ocasião, Eliseu foi um instrumento de Deus na vida de uma mulher sunamita que, apesar de ser estéril, foi agraciada com um filho após a oração do profeta. Anos depois, quando a criança morreu repentinamente, a mãe buscou Eliseu em desespero. Ele então orou ao Senhor e ressuscitou o menino, revelando o poder de Deus sobre a vida e a morte.\n\nOutro episódio notável foi a cura de Naamã, um comandante sírio leproso. Apesar de suas dúvidas iniciais, Naamã mergulhou sete vezes no rio Jordão, conforme a instrução de Eliseu, e foi curado de sua lepra. Esse milagre não só restaurou a saúde de Naamã, mas também mostrou o poder de Deus para aqueles fora de Israel.\n\nAlém de seus milagres, Eliseu foi um líder em tempos de guerra, aconselhando e protegendo Israel contra os ataques da Síria. Ele cegou os exércitos inimigos e os conduziu até Samaria, onde lhes foi concedida misericórdia. Esse ato de compaixão e estratégia demonstrou o compromisso de Eliseu com a paz e a reconciliação.\n\nEliseu realizou muitos outros milagres ao longo de sua vida, como multiplicar pães para alimentar cem homens e tornar inofensivo um ensopado envenenado. Mesmo após sua morte, seu legado continuou; um homem que foi enterrado na mesma cova de Eliseu ressuscitou ao tocar seus ossos.\n\nA vida de Eliseu foi marcada por uma fé profunda e um compromisso com o povo. Sua história mostra que Deus usa aqueles que têm um coração disposto e aberto para realizar Sua vontade, trazendo esperança, cura e reconciliação. Eliseu foi um símbolo vivo da compaixão de Deus por Seu povo, sempre pronto para ajudar e guiar Israel em tempos de necessidade.",
+        reflection1: "O Valor do Legado: A transição entre Elias e Eliseu nos ensina sobre a importância de passarmos adiante o conhecimento e a fé. Como podemos inspirar e preparar as próximas gerações para continuar o que começamos?",
+        reflection2: "A Coragem de Assumir o Chamado: Eliseu aceitou prontamente o chamado de Deus, deixando para trás sua vida antiga. Como podemos responder com prontidão e coragem ao que Deus nos chama a fazer?",
+        reflection3: "O Espírito de Fé: Elias e Eliseu demonstraram uma fé poderosa e inabalável. Como podemos buscar uma fé profunda que nos permita enfrentar desafios e realizar grandes obras em nome de Deus?"
+      },
+      {
+        id: 34,
+        title: "Eliseu: O Profeta dos Milagres e da Esperança",
+        text: "Eliseu, sucessor do profeta Elias, iniciou sua jornada com uma missão corajosa e um espírito de fé inabalável. Depois de presenciar o arrebatamento de Elias em uma carruagem de fogo, Eliseu pegou o manto de seu mestre e realizou seu primeiro milagre: atravessou o rio Jordão a seco. Esse ato marcou o início de um ministério poderoso, onde ele não só guiaria Israel espiritualmente, mas também traria alívio e esperança ao povo por meio de milagres extraordinários.\n\nUm dos primeiros milagres de Eliseu foi purificar as águas da cidade de Jericó, que estavam envenenadas e causavam doenças. Com apenas um punhado de sal e uma oração, ele tornou as águas saudáveis, abençoando a cidade e devolvendo a vida às suas terras. Eliseu também multiplicou o óleo de uma viúva empobrecida, que estava prestes a perder seus filhos como pagamento de dívidas. Com esse milagre, o pouco óleo que restava encheu diversas vasilhas, garantindo o sustento da viúva e sua família.\n\nEm uma outra ocasião, Eliseu foi um instrumento de Deus na vida de uma mulher sunamita que, apesar de ser estéril, foi agraciada com um filho após a oração do profeta. Anos depois, quando a criança morreu repentinamente, a mãe buscou Eliseu em desespero. Ele então orou ao Senhor e ressuscitou o menino, revelando o poder de Deus sobre a vida e a morte.\n\nOutro episódio notável foi a cura de Naamã, um comandante sírio leproso. Apesar de suas dúvidas iniciais, Naamã mergulhou sete vezes no rio Jordão, conforme a instrução de Eliseu, e foi curado de sua lepra. Esse milagre não só restaurou a saúde de Naamã, mas também mostrou o poder de Deus para aqueles fora de Israel.\n\nAlém de seus milagres, Eliseu foi um líder em tempos de guerra, aconselhando e protegendo Israel contra os ataques da Síria. Ele cegou os exércitos inimigos e os conduziu até Samaria, onde lhes foi concedida misericórdia. Esse ato de compaixão e estratégia demonstrou o compromisso de Eliseu com a paz e a reconciliação.\n\nEliseu realizou muitos outros milagres ao longo de sua vida, como multiplicar pães para alimentar cem homens e tornar inofensivo um ensopado envenenado. Mesmo após sua morte, seu legado continuou; um homem que foi enterrado na mesma cova de Eliseu ressuscitou ao tocar seus ossos.\n\nA vida de Eliseu foi marcada por uma fé profunda e um compromisso com o povo. Sua história mostra que Deus usa aqueles que têm um coração disposto e aberto para realizar Sua vontade, trazendo esperança, cura e reconciliação. Eliseu foi um símbolo vivo da compaixão de Deus por Seu povo, sempre pronto para ajudar e guiar Israel em tempos de necessidade.",
 
-    imagem1: "public/imgs/eliseu/eliseu.webp",
-    imagem2: "public/imgs/eliseu/eliseunaama.png",
+        imagem1: "public/imgs/eliseu/eliseu.webp",
+        imagem2: "public/imgs/eliseu/eliseunaama.png",
 
-    reflection1: "A Fé que Move Montanhas: A história de Eliseu nos mostra como a fé e a obediência a Deus nos capacitam a realizar grandes coisas. Como podemos desenvolver uma fé que nos permita agir com confiança e coragem?",
-    reflection2: "A Compaixão pelos Outros: Eliseu sempre esteve disposto a ajudar aqueles ao seu redor, mostrando a compaixão de Deus. Como podemos mostrar mais compaixão em nossas próprias vidas e estender a mão aos necessitados?",
-    reflection3: "O Legado de um Servo Fiel: Eliseu deixou um legado duradouro de fé e serviço. Como podemos viver de maneira a deixar um legado de bondade, fé e esperança para as próximas gerações?"
-  },
+        reflection1: "A Fé que Move Montanhas: A história de Eliseu nos mostra como a fé e a obediência a Deus nos capacitam a realizar grandes coisas. Como podemos desenvolver uma fé que nos permita agir com confiança e coragem?",
+        reflection2: "A Compaixão pelos Outros: Eliseu sempre esteve disposto a ajudar aqueles ao seu redor, mostrando a compaixão de Deus. Como podemos mostrar mais compaixão em nossas próprias vidas e estender a mão aos necessitados?",
+        reflection3: "O Legado de um Servo Fiel: Eliseu deixou um legado duradouro de fé e serviço. Como podemos viver de maneira a deixar um legado de bondade, fé e esperança para as próximas gerações?"
+      },
 
 
-  {
-    id: 35,
-    title: "Aguarde, o site está sendo construído! ",
-    text: "O nosso programador baixinho  está trabalhando duro para montar um site incrível para você! 💻 Em breve, você poderá navegar por um espaço cheio de histórias incríveis e inspiradoras.Agradeço a sua paciência e entusiasmo! 💖Tenha certeza que estamos dedicando todo nosso cuidado e atenção para que as histórias que você encontrar aqui sejam da melhor qualidade possível. ✨Fique ligado nas novidades! 😉",
-    imagem1: "public/imgs/embreve/coming-soon-2550190_1920.jpg",
-    imagem2: "public/imgs/logo/programadorbaixinho.png",
-  }
+      {
+        id: 35,
+        title: "Aguarde, o site está sendo construído! ",
+        text: "O nosso programador baixinho  está trabalhando duro para montar um site incrível para você! 💻 Em breve, você poderá navegar por um espaço cheio de histórias incríveis e inspiradoras.Agradeço a sua paciência e entusiasmo! 💖Tenha certeza que estamos dedicando todo nosso cuidado e atenção para que as histórias que você encontrar aqui sejam da melhor qualidade possível. ✨Fique ligado nas novidades! 😉",
+        imagem1: "public/imgs/embreve/coming-soon-2550190_1920.jpg",
+        imagem2: "public/imgs/logo/programadorbaixinho.png",
+      }
 
-];
-let i = 0;
-const boxChar = document.querySelector(".box-char");
+    ];
+    let i = 0;
+    const boxChar = document.querySelector(".box-char");
 
-history_bible.forEach(character => {
-  const characterCard = document.createElement('div');
-  characterCard.classList.add('character-card');
+    history_bible.forEach(character => {
+      const characterCard = document.createElement('div');
+      characterCard.classList.add('character-card');
 
-  characterCard.addEventListener('click', () => {
-    console.log(character.id);
-    const geral = document.getElementsByClassName("geral")[0]; 
-    if (geral) {
-      geral.innerHTML = "";
+      characterCard.addEventListener('click', () => {
+        console.log(character.id);
+        const geral = document.getElementsByClassName("geral")[0];
+        if (geral) {
+          geral.innerHTML = "";
 
-      const characteselect = `
-      <h1 id = "name">${history_bible[character.id-1].title}</h1>
+          const characteselect = `
+      <button onclick = "retornar()">RETORNAR PARA HISTÓRIAS</button>
+      <h1 id = "name">${history_bible[character.id - 1].title}</h1>
 
       <div class = "historybox">
-      <img src = "${history_bible[character.id-1].imagem1}" id = "image1"/>
-      <p id = "history">${history_bible[character.id-1].text}</p>
-      <img src = "${history_bible[character.id-1].imagem2}" id = "image2"/>
+      
+      <p id = "history">${history_bible[character.id - 1].text}</p>
+      <img src = "${history_bible[character.id - 1].imagem1}" id = "image1"/>
+      <img src = "${history_bible[character.id - 1].imagem2}" id = "image2"/>
       </div>
 
       <div class = "reflection">
-
+      
         <h1 id = "name">REFLEXÕES</h1>
-      <p id = "reflection1">"${history_bible[character.id-1].reflection1}"</p><br>
-      <p id = "reflection2">"${history_bible[character.id-1].reflection2}"</p><br>
-      <p id = "reflection3">"${history_bible[character.id-1].reflection3}"</p><br>
+      <p id = "reflection1">"${history_bible[character.id - 1].reflection1}"</p><br>
+      <p id = "reflection2">"${history_bible[character.id - 1].reflection2}"</p><br>
+      <p id = "reflection3">"${history_bible[character.id - 1].reflection3}"</p><br>
       </div>
       `
-      geral.innerHTML = characteselect;
-    }
+          geral.innerHTML = characteselect;
+        }
 
-  });
+      });
 
-  const image = document.createElement('img');
-  image.src = character.imagem1;
-  image.alt = character.title;
-  image.classList.add('character-image');
+      const image = document.createElement('img');
+      image.src = character.imagem1;
+      image.alt = character.title;
+      image.classList.add('character-image');
 
-  const title = document.createElement('h2');
-  title.classList.add('character-title');
-  title.textContent = character.title;
+      const title = document.createElement('h2');
+      title.classList.add('character-title');
+      title.textContent = character.title;
 
-  characterCard.appendChild(image); // Adicione a imagem ao card
-  characterCard.appendChild(title); // Adicione o título ao card
+      characterCard.appendChild(image); // Adicione a imagem ao card
+      characterCard.appendChild(title); // Adicione o título ao card
 
-  boxChar.appendChild(characterCard);
-  i++;
-});
+      boxChar.appendChild(characterCard);
+      i++;
+    });
+    function retornar() {
+  // Seleciona o elemento com a classe 'geral'
+  const geral = document.querySelector('.geral'); 
+
+  // Verifica se o elemento foi encontrado antes de tentar alterar o conteúdo
+  if (geral) {
+    geral.innerHTML = `
+      <section class="geral">
+        <section class="welcome">
+          <h1 class="title">NARRATIVAS BÍBLICAS</h1>
+          <p class="description">
+            Venha conhecer o site Narrativas Bíblicas! Descubra as histórias épicas contadas
+            na Bíblia, estude e aprenda com reflexões profundas sobre os relatos bíblicos.
+            Um espaço para mergulhar na sabedoria e nos ensinamentos que atravessam os séculos!
+          </p>
+          <div class="box-char"></div>
+        </section>
+        <div class="logo">
+          <img src="public/imgs/logo/logo.png" alt="">
+        </div>
+      </section>
+    `;
+    let i = 0;
+    const boxChar = document.querySelector(".box-char");
+
+    history_bible.forEach(character => {
+      const characterCard = document.createElement('div');
+      characterCard.classList.add('character-card');
+
+      characterCard.addEventListener('click', () => {
+        console.log(character.id);
+        const geral = document.getElementsByClassName("geral")[0];
+        if (geral) {
+          geral.innerHTML = "";
+
+          const characteselect = `
+      <button onclick = "retornar()">RETORNAR PARA HISTÓRIAS</button>
+      <h1 id = "name">${history_bible[character.id - 1].title}</h1>
+
+      <div class = "historybox">
+      
+      <p id = "history">${history_bible[character.id - 1].text}</p>
+      <img src = "${history_bible[character.id - 1].imagem1}" id = "image1"/>
+      <img src = "${history_bible[character.id - 1].imagem2}" id = "image2"/>
+      </div>
+
+      <div class = "reflection">
+      
+        <h1 id = "name">REFLEXÕES</h1>
+      <p id = "reflection1">"${history_bible[character.id - 1].reflection1}"</p><br>
+      <p id = "reflection2">"${history_bible[character.id - 1].reflection2}"</p><br>
+      <p id = "reflection3">"${history_bible[character.id - 1].reflection3}"</p><br>
+      </div>
+      `
+          geral.innerHTML = characteselect;
+        }
+
+      });
+
+      const image = document.createElement('img');
+      image.src = character.imagem1;
+      image.alt = character.title;
+      image.classList.add('character-image');
+
+      const title = document.createElement('h2');
+      title.classList.add('character-title');
+      title.textContent = character.title;
+
+      characterCard.appendChild(image); // Adicione a imagem ao card
+      characterCard.appendChild(title); // Adicione o título ao card
+
+      boxChar.appendChild(characterCard);
+      i++;
+    });
+  } else {
+    console.error("Elemento com a classe 'geral' não encontrado.");
+  }
+}
 
 
 
 
-
-          </script>
+  </script>
 </body>
+
 </html>
