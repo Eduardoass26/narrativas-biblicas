@@ -50,7 +50,7 @@
         text: `Lúcifer, o anjo de maior destaque e beleza, conhecido como "portador da luz", ocupava uma posição de grande poder no céu. Sua beleza e sabedoria eram inigualáveis entre os anjos. No entanto, a ambição e o orgulho o dominaram, levando-o a desejar ser igual a Deus. Ele liderou uma rebelião no céu, levando consigo um terço dos anjos. Como consequência, Lúcifer, agora conhecido como Satanás, o adversário, e seus seguidores foram expulsos do céu. A queda de Lúcifer trouxe maldição e pecado à terra, abrindo caminho para as lutas e sofrimentos que a humanidade enfrentaria. Desde então, Satanás tenta desviar a humanidade do caminho de Deus, sendo o principal opositor do plano divino.`,
 
         imagem1: "public/imgs/lucifer_a_queda/lucifer.webp",
-        imagem2: "public/imgs/lucifer_a_queda/lucifer_a_queda.webp",
+        imagem2: "public/imgs/lucifer_a_queda/ai-generated-8709885.png",
 
         reflection1: "   Orgulho e Queda: Como o orgulho afeta nossa relação com Deus e com os outros? Há áreas em sua vida onde o orgulho precisa ser superado?",
         reflection2: "   Escolhas e Consequências: A história de Lúcifer mostra que nossas escolhas têm consequências. Como essa verdade pode moldar suas decisões diárias?",
@@ -247,7 +247,7 @@
   
       A Arca da Aliança continua sendo um símbolo poderoso da presença de Deus e da aliança de Deus com seu povo. Seu significado transcende a história e nos lembra que Deus sempre esteve presente com seu povo e continua presente com aqueles que o buscam.`,
 
-        imagem1: "public/imgs/moisesarcadaalianca/arca.jpeg",
+        imagem1: "public/imgs/moisesarcadaalianca/arca.webp",
         imagem2: "public/imgs/moisesarcadaalianca/tabernaculo.png",
 
         reflection1: "O Significado da Arca:  Como a Arca da Aliança representa a presença e a proteção de Deus?  Como essa imagem nos inspira a buscar a presença de Deus em nossas vidas?",
@@ -404,7 +404,7 @@
           A queda de Saul é uma história de desobediência, ciúmes e orgulho. Embora ele tenha começado com grande promessa como o primeiro rei de Israel, sua incapacidade de seguir a vontade de Deus e sua obsessão em manter o poder o levaram à ruína. Sua história é um alerta sobre os perigos de afastar-se de Deus e de permitir que o orgulho e a insegurança tomem conta do coração.`,
 
         imagem1: "public/imgs/saulaqueda/ssaul.png",
-        imagem2: "public/imgs/saulaqueda/sauledavi.jpg",
+        imagem2: "public/imgs/saulaqueda/sauledavi .webp",
 
         reflection1: "A Desobediência: A queda de Saul começou com sua desobediência a Deus. O que podemos aprender sobre a importância de seguir as instruções de Deus, mesmo quando não entendemos completamente seus planos?",
         reflection2: "O Ciúme e o Orgulho: Saul se deixou consumir pelo ciúme de Davi. Como o orgulho e o ciúme podem destruir nossas relações e nos afastar de Deus? O que podemos fazer para manter um coração humilde?",
@@ -474,7 +474,7 @@
           A história culminou na tragédia da morte de Jônatas em batalha, um momento que devastou Davi. Ele lamentou profundamente a perda de seu amigo, escrevendo uma canção em sua homenagem, celebrando a amizade que transcendeu as adversidades. A perseguição de Saul não apenas moldou Davi como um líder, mas também destacou o poder da amizade verdadeira em meio à luta.`,
 
         imagem1: "public/imgs/daviesaul/davie saul.png",
-        imagem2: "public/imgs/daviesaul/sauledavi.jpg",
+        imagem2: "public/imgs/daviesaul/davii.webp",
 
         reflection1: "A Lealdade da Amizade: A amizade entre Davi e Jônatas nos ensina sobre a importância de apoiar uns aos outros em tempos difíceis. Como podemos ser amigos leais nas adversidades? O que isso significa para nós hoje?",
         reflection2: "Coragem para Fazer o Certo: Davi teve a coragem de não retaliar contra Saul, mostrando que a verdadeira força está em agir com justiça. Como podemos encontrar a coragem de fazer o que é certo, mesmo quando é difícil?",
@@ -759,10 +759,16 @@
       <h1 id = "name">${history_bible[character.id - 1].title}</h1>
 
       <div class = "historybox">
+      <div class = "histbox">
+        <p id = "history">${history_bible[character.id - 1].text}</p>
+      </div>
+      <div class = "img1">
+        <img src = "${history_bible[character.id - 1].imagem1}" id = "image1"/>
+      </div>
+      <div class = "img2">
+        <img src = "${history_bible[character.id - 1].imagem2}" id = "image2"/>
+      </div>
       
-      <p id = "history">${history_bible[character.id - 1].text}</p>
-      <img src = "${history_bible[character.id - 1].imagem1}" id = "image1"/>
-      <img src = "${history_bible[character.id - 1].imagem2}" id = "image2"/>
       </div>
 
       <div class = "reflection">
