@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendizados</title>
+    <link rel="stylesheet" href="aprendizados.css">
+</head>
+<body>
+    <div class="aprendizados-container">
+       
+      </div>
+<script>
+    const aprendizadosBiblia = [
+  {
+    tema: "Amor",
+    aprendizado: "Amar a Deus sobre todas as coisas e ao próximo como a si mesmo é o maior mandamento."
+  },
+  {
+    tema: "Fé",
+    aprendizado: "A fé é a certeza daquilo que esperamos e a convicção daquilo que não vemos."
+  },
+  {
+    tema: "Esperança",
+    aprendizado: "A esperança é um âncora para a alma, firme e segura."
+  },
+  {
+    tema: "Perdão",
+    aprendizado: "Perdoar é liberar o passado e abrir caminho para um futuro melhor."
+  },
+  {
+    tema: "Humildade",
+    aprendizado: "A humildade é reconhecer a própria fragilidade e confiar na força de Deus."
+  },
+  {
+    tema: "Gratidão",
+    aprendizado: "Agradecer a Deus por todas as coisas, grandes e pequenas, é uma atitude de fé e reconhecimento."
+  },
+  {
+    tema: "Obediência",
+    aprendizado: "A obediência a Deus é um sinal de amor e confiança em sua sabedoria."
+  },
+  {
+    tema: "Paciência",
+    aprendizado: "A paciência é a capacidade de esperar com confiança em Deus, mesmo em tempos difíceis."
+  },
+  {
+    tema: "Resiliência",
+    aprendizado: "Deus nos dá força para superar as dificuldades e nos levantar após as quedas."
+  },
+  {
+    tema: "Misericórdia",
+    aprendizado: "A misericórdia de Deus é um presente que nos permite receber perdão e amor."
+  },
+  {
+    tema: "Justiça",
+    aprendizado: "Deus é justo e defenderá os oprimidos e os desfavorecidos."
+  },
+  {
+    tema: "Verdade",
+    aprendizado: "A verdade nos liberta e nos aproxima de Deus."
+  },
+  {
+    tema: "Sabedoria",
+    aprendizado: "Buscar a sabedoria de Deus é buscar a melhor forma de viver."
+  },
+  {
+    tema: "Comunidade",
+    aprendizado: "Somos chamados a viver em comunidade, amando e servindo uns aos outros."
+  },
+  {
+    tema: "Servir",
+    aprendizado: "Servir aos outros é um ato de amor e obediência a Deus."
+  },
+  {
+    tema: "Perdão",
+    aprendizado: "O perdão verdadeiro não apenas perdoa o outro, mas também liberta a si mesmo."
+  },
+  {
+    tema: "Fé",
+    aprendizado: "A fé é um dom de Deus que nos capacita a crer no invisível."
+  },
+  {
+    tema: "Esperança",
+    aprendizado: "A esperança nos dá a certeza de que Deus está trabalhando em nossas vidas, mesmo quando não vemos resultados."
+  },
+  {
+    tema: "Amor",
+    aprendizado: "O amor de Deus é incondicional e nos transforma."
+  },
+  {
+    tema: "Graça",
+    aprendizado: "A graça de Deus é um presente gratuito que nos torna dignos de receber seu amor."
+  }
+];
+
+const aprendizadosContainer = document.querySelector('.aprendizados-container');
+
+// Gerar o HTML
+let html = '<h1>Aprendizados da Bíblia</h1><div class="aprendizados-list">';
+for (let i = 0; i < aprendizadosBiblia.length; i++) {
+  html += `
+        <div class="aprendizado">
+          <h3>${aprendizadosBiblia[i].tema}</h3>
+          <p>${aprendizadosBiblia[i].aprendizado}</p>
+        </div>
+  `;
+}
+html += '</div>';
+
+// Inserir o HTML na div
+aprendizadosContainer.innerHTML = html;
+
+</script>
+</body>
+</html>

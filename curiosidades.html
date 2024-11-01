@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="curiosidades.css">
+    <title>Curiosidades Biblicas</title>
+
+
+</head>
+<body>
+    <script>
+        const bibleCuriosidades = [
+  {
+    curiosidade: "A Bíblia não é um único livro, mas sim uma coleção de 66 livros escritos por diferentes autores em diferentes períodos, ao longo de mais de 1.500 anos.",
+    fonte: "Fato histórico."
+  },
+  {
+    curiosidade: "O idioma original da Bíblia não é o português. A maioria dos livros da Bíblia foi escrita em hebraico, aramaico e grego.",
+    fonte: "Fato histórico."
+  },
+  {
+    curiosidade: "O nome 'Jesus' não aparece no Antigo Testamento. Ele é uma figura central do Novo Testamento.",
+    fonte: "Análise textual da Bíblia."
+  },
+  {
+    curiosidade: "A Bíblia é o livro mais traduzido do mundo, tendo sido traduzida para mais de 2.400 idiomas.",
+    fonte: "Estatísticas de tradução da Bíblia."
+  },
+  {
+    curiosidade: "Os primeiros manuscritos da Bíblia eram feitos em pergaminho, um material feito de pele de animal.",
+    fonte: "História da produção de manuscritos."
+  },
+  {
+    curiosidade: "A Bíblia foi copiada à mão por muitos anos antes da invenção da imprensa, no século XV.",
+    fonte: "História da produção de manuscritos e da imprensa."
+  },
+  {
+    curiosidade: "A Bíblia foi perseguida em vários períodos da história, como durante a época da Igreja Católica, que proibiu a tradução da Bíblia para o inglês por muitos anos.",
+    fonte: "História da Igreja Católica e da tradução da Bíblia."
+  },
+  {
+    curiosidade: "A Bíblia inspirou diversas áreas além da religião, como a literatura, o cinema, a música e as artes em geral.",
+    fonte: "Análise da influência da Bíblia na cultura."
+  },
+  {
+    curiosidade: "O nome 'Bíblia' vem do grego 'biblia', que significa 'livros'.",
+    fonte: "Etimologia da palavra 'Bíblia'."
+  },
+  {
+    curiosidade: "A Bíblia foi traduzida para a língua dos índios Guarani no século XVI.",
+    fonte: "História da tradução da Bíblia para o Guarani."
+  },
+  {
+    curiosidade: "A Bíblia contém relatos de milagres, como a cura de doentes e a ressurreição de mortos.",
+    fonte: "Análise dos relatos de milagres na Bíblia."
+  },
+  {
+    curiosidade: "A Bíblia foi usada como um livro de história, lei, poesia, contos e profecia, além de ser um livro religioso.",
+    fonte: "Análise do conteúdo da Bíblia."
+  },
+  {
+    curiosidade: "O livro de Jó é o único livro da Bíblia que não menciona o nome de Deus, mas fala muito sobre Ele.",
+    fonte: "Análise textual do livro de Jó."
+  },
+  {
+    curiosidade: "O nome 'Jesus' era popular na época: O nome Jesus (Yeshua em hebraico) era um nome comum na época de Jesus, significando 'Deus salva'.  Ele era tão popular quanto nomes como 'João' ou 'Maria' hoje.",
+    fonte: "Estudos de nomes próprios na época romana e em registros históricos da época."
+  },
+  {
+    curiosidade: "A Bíblia proíbe tatuagens?  Na verdade, a proibição bíblica sobre tatuagens se refere a uma prática pagã de marcar o corpo como forma de culto a deuses. A intenção da lei era evitar a idolatria, não a tatuagem em si.",
+    fonte: "Levítico 19:28 e contexto histórico da época."
+  },
+  {
+    curiosidade: "Os primeiros cristãos eram considerados 'sectários':  Os cristãos primitivos eram vistos com desconfiança pelo Império Romano, e eram chamados de 'sectários' ou 'ateus' por não cultuar os deuses romanos.",
+    fonte: "Registros históricos sobre o tratamento dos cristãos pelos romanos no primeiro século."
+  },
+  {
+    curiosidade: "O primeiro livro impresso da Bíblia foi a Vulgata Latina:  Em 1455, Gutenberg imprimiu a Vulgata Latina, a tradução da Bíblia para o latim feita por São Jerônimo no século IV. Essa obra foi um marco na história da impressão e da difusão da Bíblia.",
+    fonte: "História da impressão e da Vulgata Latina."
+  },
+  {
+    curiosidade: "As cartas de Paulo foram escritas em grego Koine:  O grego Koine, uma língua comum na época romana, foi o idioma usado por Paulo Apóstolo para escrever suas cartas, que são parte essencial do Novo Testamento.",
+    fonte: "Análise linguística das cartas de Paulo."
+  },
+  {
+    curiosidade: "A Bíblia foi traduzida para o português pela primeira vez no século XVI: A Bíblia foi traduzida para o português pela primeira vez por Frei João Fernandes, um monge franciscano, no século XVI. A edição de 1619, impressa na Holanda, tornou-se a base para a tradução da Bíblia usada no Brasil.",
+    fonte: "História da tradução da Bíblia para o português."
+  },
+  {
+    curiosidade: "A palavra 'Aleluia' é uma palavra hebraica:  'Aleluia' significa 'Louvai ao Senhor' em hebraico. É uma expressão de louvor e adoração a Deus, presente em vários Salmos e canções da Igreja.",
+    fonte: "Linguagem hebraica e origem da palavra 'Aleluia'."
+  },
+  {
+    curiosidade: "A Bíblia foi escrita em diferentes gêneros literários: A Bíblia não é um livro único. Ela apresenta diversos gêneros literários, como poesia, história, lei, profecia, contos, parábolas e cartas, que enriquecem seu conteúdo e mensagens.",
+    fonte: "Análise da estrutura e dos gêneros literários da Bíblia."
+  },
+  {
+    curiosidade: "Os primeiros homens mencionados na Bíblia viviam muito mais do que nós: Adão, por exemplo, viveu 930 anos! Essa longevidade era comum naquela época.",
+    fonte: "Gênesis 5."
+  },
+  {
+    curiosidade: "A Bíblia não explica diretamente por que Deus reduziu a expectativa de vida dos homens. Mas, algumas interpretações sugerem que a diminuição da longevidade pode estar relacionada à entrada do pecado no mundo e à fragilidade da natureza humana após a queda.",
+    fonte: "Interpretações teológicas sobre a longevidade e o pecado."
+  },
+  {
+    curiosidade: "O Cristianismo teve início com um pequeno grupo de seguidores de Jesus, que se espalharam por todo o Império Romano, pregando seus ensinamentos e realizando missões.",
+    fonte: "História do Cristianismo primitivo."
+  },
+  {
+    curiosidade: "O Apocalipse, o último livro da Bíblia, é interpretado de diferentes maneiras por teólogos: alguns o veem como uma descrição literal de eventos futuros, enquanto outros o interpretam como uma alegoria sobre a luta entre o bem e o mal.",
+    fonte: "Análise teológica do Apocalipse."
+  },
+  {
+    curiosidade: "O espaço em branco entre o Antigo e o Novo Testamento, conhecido como período intertestamentário, representa um silêncio de 400 anos, um período de grande transformação histórica e cultural para o povo judeu.",
+    fonte: "História do povo judeu e do período intertestamentário."
+  },
+  {
+    curiosidade: "De acordo com os relatos bíblicos, quase todos os apóstolos de Jesus tiveram mortes violentas e cruéis:  Pedro foi crucificado de cabeça para baixo, Tiago, filho de Zebedeu, foi decapitado, André foi crucificado em forma de 'x', Mateus foi morto a machadadas, Felipe foi crucificado e morto a lança, Bartolomeu foi esfolado vivo, Tomé foi traspassado por uma lança, Tiago, filho de Alfeu, foi apedrejado, Simão foi serrado ao meio, Judas Tadeu foi espancado até a morte, Matias foi apedrejado e morto a lança, e Barnabé foi apedrejado até a morte.",
+    fonte: "Tradições e relatos históricos da Igreja."
+  },
+  {
+    curiosidade: "Jesus era judeu, e sua religião original era o Judaísmo. Ele nasceu em uma família judia, seguia os costumes e tradições judaicas, e pregava nas sinagogas judaicas.",
+    fonte: "Textos bíblicos e estudos históricos sobre a vida de Jesus."
+  },
+  {
+    curiosidade: "Saulo de Tarso, que se tornou o apóstolo Paulo, era um fariseu zeloso que perseguia os cristãos antes de ter uma experiência transformadora com Jesus ressuscitado. Ele era conhecido por perseguir os cristãos, aprisioná-los e até mesmo aprovar a morte de Estevão, o primeiro mártir cristão.",
+    fonte: "Atos dos Apóstolos 8-9 e cartas de Paulo no Novo Testamento."
+  },
+  {
+    curiosidade: "Jesus realizou muitos milagres durante seu ministério, mas ele não realizou nenhum milagre em sua cidade natal, Nazaré. Isso pode ser interpretado como uma rejeição de Jesus por parte dos moradores de sua cidade, que não acreditaram em seu poder e missão.",
+    fonte: "Marcos 6:1-6."
+  },
+  {
+    curiosidade: "A Bíblia Católica Romana inclui livros chamados Apócrifos, considerados inspirados por Deus por essa denominação, mas não reconhecidos como canônicos pelas outras denominações cristãs.  A decisão sobre quais livros comporiam o cânone bíblico foi um processo histórico complexo que envolveu debates teológicos e a formação de concílios, como o Concílio de Trento no século XVI.",
+    fonte: "História do cânone bíblico e do Concílio de Trento."
+  }
+];
+function curiosidades_write(){
+    for(i=0;i<bibleCuriosidades.lenght;i++){
+        body.innerHtml += `<div>
+      <h1>Curiosidades Bíblicas</h1>
+      <div>
+        
+          <div class="curiosidade">
+            <h3>${bibleCuriosidades[i].curiosidade}</h3>
+            <p><em>Fonte: ${bibleCuriosidades[i].fonte}</em></p>
+          </div>
+        
+      </div>
+    </div>`
+    }
+}
+
+    </script>
+</body>
+</html>
